@@ -1,0 +1,56 @@
+[user]
+       name = bolpin
+       email = bolpin@gettyimages.com
+[http]
+       sslVerify = false
+[core]
+       autocrlf = false
+[push]
+       default = current
+[branch]
+       autosetuprebase = always
+
+
+
+
+; [user]
+; 	name = Brian Olpin
+; 	email = bolpin@gmail.com 
+; [core]
+;        autocrlf = true
+; [alias]
+; 	co = checkout
+;         cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+; [color]
+; 	diff = auto
+; 	status = auto
+; 	branch = auto
+; 
+; [color "diff"]
+;         meta = yellow 
+; 
+; [core]
+; 	excludesfile = ~/.gitignore
+; 	editor = vim --noplugin
+; [apply]
+; 	whitespace = nowarn
+; 
+; [alias]
+;       lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+; [help]
+; 	autocorrect = 1
+; [branch]
+; 	autosetupmerge = true
+;         autosetuprebase = always
+; [push]
+; 	default = current
+; [rerere]
+; 	enabled = 1
+; [github]
+; 	user = bolpin
+; [merge]
+;         ff = only
+; [http]
+; 	sslVerify = false
+[credential]
+	helper = osxkeychain

@@ -1,0 +1,123 @@
+# Handle the fact that this file will be used with multiple OSs
+platform=`uname`
+if [[ $platform == 'Linux' ]]; then
+  alias a='ls -lrth --color'
+elif [[ $platform == 'Darwin' ]]; then
+  alias a='ls -lrthG'
+fi
+
+alias amend="git commit --amend"
+alias asu="cd ~/code/rails/activesupport"
+alias aliases='vim ~/.dotfiles/zsh/aliases'
+alias b='ssh -t ben@benorenstein.com screen -rd irc'
+alias bake='bundle exec rake'
+alias be='bundle exec'
+alias ben='ssh ben@benorenstein.com'
+alias bi='bundle install'
+alias be='bundle exec'
+alias bo='cd ~/code/boardwalk'
+alias bu='bundle update'
+alias bunbang='bundle install && !!'
+alias c='cd'
+alias code='cd ~/code'
+alias codereview='vim ~/Dropbox/notes/code-review-checklist.txt'
+alias d='cd ~/.dotfiles'
+alias dbprep='rdm && rdtp'
+alias di='cd ~/code/discourse'
+alias dr='cd ~/Dropbox'
+alias drop='cd ~/Dropbox'
+alias fs='foreman start'
+alias -g G='| grep'
+alias gad='git add .'
+alias gadu='git add -u .'
+alias gbc='gdc'
+alias gca='git commit -a'
+alias gcaa='git commit -a --amend -C HEAD'
+alias gcl='git clone'
+alias gcm="git commit -m"
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdm='git diff master'
+alias get='sudo apt-get install'
+alias gg='git lg'
+alias gpush='echo "Use gp!" && git push'
+alias gp='git push'
+alias gpf='git push -f'
+alias gpr='git pull --rebase'
+alias grc='git rebase --continue'
+alias grake='rspec --drb spec/ && cucumber --drb features/'
+alias gurad='guard'
+alias h='sync'
+alias he='cd ~/code/hacker-engine'
+alias herkou='heroku'
+alias hpush='git push heroku'
+alias irb='irb --readline -r irb/completion'
+alias journal='vim ~/Dropbox/docs/journal/2011.txt'
+alias killruby='killall -9 ruby'
+alias killrudy='killall -9 ruby'
+alias -g M='| more'
+alias mastre='master'
+alias newscreen="screen -S foo"
+alias l='cd ~/code/learn'
+alias -g L='| less'
+alias pc='production-console'
+alias parallel='rdtp && rake parallel:prepare test:parallel_with_specs'
+alias patch='git format-patch HEAD^ --stdout > patch.diff'
+alias podcast='vim ~/Dropbox/work/thoughtbot/notes/podcast.txt'
+alias prepdb='dbprep'
+alias r='cd ~/code/refactoring-good-to-great'
+alias remore='!! | more'
+alias reguard='killall -9 ruby ; guard'
+alias rerake='!! && rake'
+alias restart_apache="sudo /etc/init.d/apache2 restart"
+alias restart_postgres="stoppostgres && startpostgres"
+alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
+alias retagwithcoffee='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * && coffeetags -R -f >> tags'
+alias repush="gpr && git push"
+alias review="git diff master"
+alias rc='rails console'
+alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
+alias rdm="be rake db:migrate"
+alias rdtp="be rake db:test:prepare"
+alias rs='bundle install && rails server -p 3000'
+alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
+alias sfh='cd ~/code/speaking-for-hackers-book'
+alias shpush='rake && hpush'
+alias sc='staging-console'
+alias so='source ~/.dotfiles/zsh/aliases'
+alias sp='safepush'
+alias speaking='cd ~/Dropbox/speaking'
+alias ss='ruby app.rb'
+alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias startredis='redis-server /usr/local/etc/redis.conf &'
+alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
+alias staging='git push heroku-staging master'
+alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped." && repush'
+alias track='git checkout -t'
+alias warmup='vim ~/Dropbox/barbershop/warmups/ideas.txt'
+alias u='cd ..'
+alias v='vim'
+alias vi='vim'
+alias vu='cd ~/code/vim-university'
+alias y='cd ~/code/ybuy'
+alias z='zeus'
+alias zs='zeus start'
+
+# Heroku staging
+alias staging-console='heroku run console --remote staging'
+alias staging-tail='heroku logs --tail --remote staging'
+
+# Heroku production
+alias production-console='heroku run console --remote production'
+alias production-tail='heroku logs --tail --remote production'
+
+# # Heroku databases
+alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
+alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
+alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
+alias db-backup-production='heroku pgbackups:capture --remote production'
+alias db-backups='heroku pgbackups --remote production'
+
+alias levelup-get-production='curl -o ~/Downloads/latest.dump `heroku pgbackups:url --app levelup-production`'
+alias levelup-db-fix='killruby ; rake db:drop:all db:create:all ; pg_restore --verbose --clean --no-acl --no-owner -d levelup_development ~/Downloads/latest.dump -j 8 ; prepdb && rake levelup:dev:create_admin && rails runner CreditCard.delete_all'
