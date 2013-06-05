@@ -6,15 +6,16 @@ elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
 fi
 
-alias go="cd ~/rails/unisporkal"
+
+# Show ten most used commands in history:
+# history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 
 alias amend="git commit --amend"
 alias asu="cd ~/code/rails/activesupport"
 alias aliases='vim ~/.dotfiles/bash/aliases'
-alias b='ssh -t ben@benorenstein.com screen -rd irc'
 alias bake='bundle exec rake'
 alias be='bundle exec'
-alias ben='ssh ben@benorenstein.com'
+alias b='ssh brian@olpin.com'
 alias bi='bundle install'
 alias be='bundle exec'
 alias bu='bundle update'
@@ -33,6 +34,7 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias get='sudo apt-get install'
 alias gg='git lg'
+alias gou="cd ~/rails/unisporkal"
 alias gpush='git push'
 alias gpsuh='git push'
 alias gpr='git pull --rebase'

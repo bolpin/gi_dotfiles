@@ -81,7 +81,7 @@ map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
@@ -103,7 +103,7 @@ map <Leader>su :RSunittest
 map <Leader>sv :RSview 
 map <Leader>t :w<cr>:call RunCurrentTest()<CR>
 map <Leader>y :!rspec --drb %<cr>
-map <Leader>u :Runittest<cr>
+map <Leader>ut :Runittest<cr>
 map <Leader>vc :RVcontroller<cr>
 map <Leader>vf :RVfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
@@ -113,6 +113,10 @@ map <Leader>vm :RVmodel<cr>
 map <Leader>vv :RVview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
+
+nnoremap <Leader>u :diffupdate<cr>
+nnoremap <Leader>g :diffget<cr>
+nnoremap <Leader>p :diffput<cr> 
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -154,7 +158,8 @@ set smarttab
 set noincsearch
 set ignorecase smartcase
 set laststatus=2  " Always show status line.
-set relativenumber
+"set relativenumber
+set number
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
 set bg=light
