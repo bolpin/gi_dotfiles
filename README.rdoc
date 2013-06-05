@@ -1,14 +1,12 @@
-=== Ben Orenstein's dot files
+=== My dot files (Thanks to Ben Orenstein and Peepcode)
 
 These are config files to set up a system the way I like it.
 
 Vim-users will likely find useful stuff in .vimrc, and also vim/snippets.
 
-I'm also a pretty aggressive aliaser. You might find a few you like in bash/aliases.
-
 == Installation
 
-  git clone git://github.com/r00k/dotfiles ~/.dotfiles
+  git clone git://github.com/bolpin/gi_dotfiles ~/.dotfiles
   cd ~/.dotfiles
   rake install
 
