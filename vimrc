@@ -78,6 +78,7 @@ map <Leader>j :CommandT app/assets/javascripts<cr>client/
 map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
+map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<cr> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
