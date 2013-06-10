@@ -1,0 +1,20 @@
+[user]
+	name = bolpin
+	email = bolpin@gettyimages.com
+[http]
+       sslVerify = false
+[core]
+       autocrlf = false
+	excludesfile = /Users/brian/.gitignore_global
+[push]
+       default = current
+[branch]
+       autosetuprebase = always
+[credential]
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

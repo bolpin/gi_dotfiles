@@ -1,22 +1,13 @@
-[user]
-	name = bolpin
-	email = bolpin@gettyimages.com
+ [user]
+ 	name = Brian Olpin
+ 	email = bolpin@gmail.com 
 [http]
        sslVerify = false
 [core]
        autocrlf = false
-	excludesfile = /Users/brian/.gitignore_global
+        excludesfile = /Users/brian/.gitignore_global
 [push]
        default = current
-[branch]
-       autosetuprebase = always
-
-
-
-
-; [user]
-; 	name = Brian Olpin
-; 	email = bolpin@gmail.com 
 ; [core]
 ;       autocrlf = true
 ; [alias]
@@ -47,12 +38,10 @@
 ; 	default = current
 ; [rerere]
 ; 	enabled = 1
-; [github]
-; 	user = bolpin
+[github]
+ 	user = bolpin
 ; [merge]
 ;         ff = only
-; [http]
-; 	sslVerify = false
 [credential]
 	helper = osxkeychain
 [difftool "sourcetree"]

@@ -12,26 +12,23 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
-" Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-cucumber'
-" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
-" Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'wincent/Command-T'
-" Bundle 'koron/nyancat-vim'
+Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'scrooloose/nerdtree'
+Bundle 'slim-template/vim-slim'
+Bundle 'vim-scripts/ack.vim'
 
-" Clojure
-" Bundle 'tpope/vim-foreplay'
-" Bundle 'tpope/vim-classpath'
-" Bundle 'guns/vim-clojure-static'
 
 " ================
 " Ruby stuff
@@ -66,6 +63,7 @@ map <Leader>dd odebugger<cr>puts 'debugger'<esc>:w<cr>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>ec :e ~/code/
+nnoremap <Leader>g :diffget<cr>
 map <Leader>gac :Gcommit -m -a ""<LEFT>
 map <Leader>gc :Gcommit -m ""<LEFT>
 map <Leader>gr :e ~/Dropbox/notes/journal<CR>
@@ -81,6 +79,7 @@ map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
+nnoremap <Leader>p :diffput<cr> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
 map <Leader>ra :%s/
@@ -103,6 +102,7 @@ map <Leader>su :RSunittest
 map <Leader>sv :RSview 
 map <Leader>t :w<cr>:call RunCurrentTest()<CR>
 map <Leader>y :!rspec --drb %<cr>
+nnoremap <Leader>u :diffupdate<cr>
 map <Leader>ut :Runittest<cr>
 map <Leader>vc :RVcontroller<cr>
 map <Leader>vf :RVfunctional<cr>
@@ -114,9 +114,6 @@ map <Leader>vv :RVview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
 
-nnoremap <Leader>u :diffupdate<cr>
-nnoremap <Leader>g :diffget<cr>
-nnoremap <Leader>p :diffput<cr> 
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -176,11 +173,14 @@ set grepprg=ag
 " Get rid of the delay when hitting esc!
 set noesckeys
 
-" Make the omnicomplete text readable
-:highlight PmenuSel ctermfg=black
-
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" Set gutter background to black
+highlight SignColumn ctermbg=black
+
+" Make the omnicomplete text readable
+:highlight PmenuSel ctermfg=black
 
 " Highlight the status line
 highlight StatusLine ctermfg=blue ctermbg=yellow
@@ -314,15 +314,15 @@ endfunction
 
 " set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-let g:CommandTMaxHeight=50
-let g:CommandTMatchWindowAtTop=1
+" let g:CommandTMaxHeight=50
+" let g:CommandTMatchWindowAtTop=1
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.
 set timeoutlen=500
 
 " Don't go past 100 chars on levelup:
-autocmd BufNewFile,BufRead /Users/ben/code/levelup/*.rb set colorcolumn=100
+autocmd BufNewFile,BufRead /Users/brian/code/levelup/*.rb set colorcolumn=100
 
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
@@ -334,9 +334,6 @@ function! OpenFactoryFile()
     execute ":sp spec/factories.rb"
   end
 endfunction
-
-" Set gutter background to black
-highlight SignColumn ctermbg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE (thanks Gary Bernhardt)
@@ -351,6 +348,9 @@ function! RenameFile()
     endif
 endfunction
 map <Leader>n :call RenameFile()<cr>
+
+" colors vividchalk
+
 
 " ========================================================================
 " End of things set by me.
