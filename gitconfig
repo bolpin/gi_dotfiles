@@ -2,10 +2,10 @@
 	name = bolpin
 	email = bolpin@gettyimages.com
 [http]
-       sslVerify = false
+	sslVerify = false
 [core]
        autocrlf = false
-	excludesfile = /Users/brian/.gitignore_global
+	excludesfile = /Users/brian/.gitignore
 [push]
        default = current
 [branch]

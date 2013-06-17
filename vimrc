@@ -82,6 +82,7 @@ map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<cr> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
+map <Leader>ppj :.!python -m json.tool<cr>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
@@ -95,12 +96,14 @@ map <Leader>sm :RSmodel
 map <Leader>sp yss<p>
 map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
 map <Leader>so :so %<cr>
+map <Leader>splunk :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
 map <Leader>ss ds)i <esc>:w<cr>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
 map <Leader>t :w<cr>:call RunCurrentTest()<CR>
+map <Leader>tr !touch tmp/restart.txt
 map <Leader>y :!rspec --drb %<cr>
 nnoremap <Leader>u :diffupdate<cr>
 map <Leader>ut :Runittest<cr>
@@ -174,7 +177,7 @@ set grepprg=ag
 set noesckeys
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+" let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
 " Set gutter background to black
 highlight SignColumn ctermbg=black
@@ -361,6 +364,9 @@ map <Leader>n :call RenameFile()<cr>
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+endif
+if has("gui_running")
+  colorscheme vividchalk
 endif
 
 " Only do this part when compiled with support for autocommands.
