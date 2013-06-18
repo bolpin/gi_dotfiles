@@ -1,7 +1,21 @@
-function gbt() {
-  git branch --track $2 $1/$2
-  git checkout $2
+
+# Show ten most used commands in history:
+function common_commands {
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
+
+# Creating a remote tracking branch
+function gbt { 
+  #git branch --track $2 $1/$2
+  #git checkout $2
+  git branch --track $1 "origin/$1"
+  git checkout $1
+}
+
+function git-new-remote-tracking {
+  git checkout -b $1 && git push -u origin $1
+}
+
 
 function grf() {
   rm $1
@@ -17,14 +31,7 @@ function detect_rvm_version {
   [ "$full" != "" ] && echo "$full"
 }
 
-# Creating a remote tracking branch
-function track { 
-  git branch --track $1 "origin/$1"
-}
 
-function git-new-remote-tracking {
-  git checkout -b $1 && git push -u origin $1
-}
 
 function git_branch_name {
   val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
