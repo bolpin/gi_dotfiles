@@ -6,6 +6,9 @@ elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
 fi
 
+# Show ten most used commands in history:
+# history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+
 alias amend="git commit --amend"
 alias asu="cd ~/code/rails/activesupport"
 alias aliases='vim ~/.dotfiles/zsh/aliases'
@@ -24,6 +27,7 @@ alias dbprep='rdm && rdtp'
 alias di='cd ~/code/discourse'
 alias dr='cd ~/Dropbox'
 alias drop='cd ~/Dropbox'
+alias ea='vi ~/.zsh/aliases'
 alias fs='foreman start'
 alias -g G='| grep'
 alias gad='git add .'
@@ -79,6 +83,7 @@ alias rc='rails console'
 alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
 alias rdm="be rake db:migrate"
 alias rdtp="be rake db:test:prepare"
+alias rm='rmf'
 alias rs='bundle install && rails server -p 3000'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
 alias sfh='cd ~/code/speaking-for-hackers-book'
