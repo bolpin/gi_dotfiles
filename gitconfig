@@ -1,15 +1,18 @@
 [user]
-	name = bolpin
-	email = bolpin@gettyimages.com
+  name = bolpin
+  email = bolpin@gettyimages.com
 [http]
-	sslVerify = false
+  sslVerify = false
 [core]
-       autocrlf = false
-	excludesfile = /Users/brian/.gitignore
+  editor = vim --noplugin
+  autocrlf = false
+  excludesfile = /Users/bolpin/.gitignore_global
 [push]
-       default = current
+  default = current
 [branch]
-       autosetuprebase = always
+  autosetuprebase = always
+[credential]
+  helper = osxkeychain
 
 
 
@@ -19,16 +22,6 @@
 ; 	email = bolpin@gmail.com 
 ; [core]
 ;       autocrlf = true
-; [alias]
-; 	co = checkout
-;       cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
-; [color]
-; 	diff = auto
-; 	status = auto
-; 	branch = auto
-; 
-; [color "diff"]
-;       meta = yellow 
 ; 
 ; [core]
 ; 	excludesfile = ~/.gitignore
@@ -37,14 +30,21 @@
 ; 	whitespace = nowarn
 ; 
 ; [alias]
+; 	co = checkout
+;       cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
 ;       lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+; 	graph = log --graph --all --format=format:'%C(bold)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold white)%cn%C(reset) %C(white)%s%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+; 	gg = !git graph
+; 	g = !git graph -n
+; 	loc = config --local
+; 	glo = config --global
+; 	peek = fetch -v --dry-run
+; 	change = !git --no-pager show -m --name-only 
 ; [help]
 ; 	autocorrect = 1
 ; [branch]
 ; 	autosetupmerge = true
 ;         autosetuprebase = always
-; [push]
-; 	default = current
 ; [rerere]
 ; 	enabled = 1
 ; [github]
@@ -53,11 +53,48 @@
 ;         ff = only
 ; [http]
 ; 	sslVerify = false
-[credential]
-	helper = osxkeychain
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
+
+; [difftool "sourcetree"]
+; 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+; 	path = 
+; [mergetool "sourcetree"]
+; 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+; 	trustExitCode = true
+
+
+[color]
+    ui = true
+    branch = auto
+    diff = auto
+    status = auto
+    interactive = auto
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = red bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green bold
+    changed = red bold
+    untracked = cyan bold
+[merge]
+    tool = p4merge
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "p4merge"]
+    path = /Applications/p4merge.app/Contents/Resources/launchp4merge 
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[diff]
+    tool = p4merge
+[difftool]
+    prompt = false
+[difftool "p4merge"]
+    path = /Applications/p4merge.app/Contents/Resources/launchp4merge
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+
