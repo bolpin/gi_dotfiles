@@ -23,6 +23,8 @@ HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
 
+REPORTTIME=10
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 

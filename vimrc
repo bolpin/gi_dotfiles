@@ -29,7 +29,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'slim-template/vim-slim'
 Bundle 'vim-scripts/ack.vim'
 
-
 " ================
 " Ruby stuff
 " ================
@@ -318,7 +317,7 @@ endfunction
 
 " set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" let g:CommandTMaxHeight=50
+let g:CommandTMaxHeight=40
 " let g:CommandTMatchWindowAtTop=1
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
@@ -353,11 +352,12 @@ function! RenameFile()
 endfunction
 map <Leader>n :call RenameFile()<cr>
 
-" colors vividchalk
+syntax enable
+colorscheme vividchalk
 
 
 " ========================================================================
-" End of things set by me.
+" Stuff not set by me
 " ========================================================================
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -365,9 +365,6 @@ map <Leader>n :call RenameFile()<cr>
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-endif
-if has("gui_running")
-  colorscheme vividchalk
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -397,3 +394,10 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
+" ========================================================================
+" More stuff set by me
+" ========================================================================
+
+highlight Search guibg=DarkRed ctermbg=DarkRed
+
