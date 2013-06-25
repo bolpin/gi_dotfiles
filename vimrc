@@ -111,8 +111,9 @@ map <Leader>vc :RVcontroller<cr>
 map <Leader>vf :RVfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
 map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>vu :RVunittest<CR>
 map <Leader>vm :RVmodel<cr>
+map <Leader>vu :RVunittest<CR>
+map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
 map <Leader>vv :RVview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
@@ -137,6 +138,9 @@ map <C-p> :cp<CR>
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
 
+vnoremap < <gv
+vnoremap > >gv
+
 set nocompatible
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
@@ -159,7 +163,8 @@ set noincsearch
 set ignorecase smartcase
 set laststatus=2  " Always show status line.
 "set relativenumber
-set number
+" set number
+set nonumber
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
 set bg=light
