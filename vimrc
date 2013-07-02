@@ -58,8 +58,9 @@ map <Leader>cm :Rjmodel client/
 map <Leader>ct :Rtemplate client/
 map <Leader>cv :Rjview client/
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
-map <Leader>dd odebugger<cr>puts 'debugger'<esc>:w<cr>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <Leader>dd odebugger<cr>puts 'debugger'<esc>:w<cr>
+map <leader>dh :execute 'NERDTreeToggle %'<CR>
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>ec :e ~/code/
 nnoremap <Leader>g :diffget<cr>
@@ -76,6 +77,7 @@ map <Leader>i mmgg=G`m<CR>
 map <Leader>j :CommandT app/assets/javascripts<cr>client/
 map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
+map <Leader>ng :sp ~/Dropbox/notes/git.txt<cr>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
