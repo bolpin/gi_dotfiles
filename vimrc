@@ -28,6 +28,7 @@ Bundle 'vim-scripts/ruby-matchit'
 Bundle 'scrooloose/nerdtree'
 Bundle 'slim-template/vim-slim'
 Bundle 'vim-scripts/ack.vim'
+Bundle 'vim-scripts/loremipsum'
 
 " ================
 " Ruby stuff
@@ -119,7 +120,6 @@ map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
 map <Leader>vv :RVview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
-
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
