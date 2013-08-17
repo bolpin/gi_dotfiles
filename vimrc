@@ -12,9 +12,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
-Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'tomtom/tcomment_vim'
+" Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
@@ -26,7 +26,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'scrooloose/nerdtree'
-Bundle 'slim-template/vim-slim'
+" Bundle 'slim-template/vim-slim'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/loremipsum'
 
@@ -105,7 +105,8 @@ map <Leader>ss ds)i <esc>:w<cr>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
-map <Leader>t :w<cr>:call RunCurrentTest()<CR>
+" map <Leader>t :w<cr>:call RunCurrentTest()<CR>
+map <Leader>t :w<cr>:!rake cucumber:controller_wip<CR>
 map <Leader>tr !touch tmp/restart.txt
 map <Leader>y :!rspec --drb %<cr>
 nnoremap <Leader>u :diffupdate<cr>
@@ -135,6 +136,8 @@ map <C-t> <esc>:tabnew<CR>
 map <C-x> <C-w>c
 map <C-n> :cn<CR>
 map <C-p> :cp<CR>
+
+map <F4> :exec "Ack " . expand("<cword>")<CR>
 
 " Emacs-like beginning and end of line.
 imap <c-e> <c-o>$
