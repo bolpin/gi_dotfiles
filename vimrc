@@ -89,6 +89,7 @@ map <Leader>ppj :.!python -m json.tool<cr>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
+map <Leader>rm :e ~/Dropbox/notes/rubymine.txt<cr>
 map <Leader>rs :vsp <C-r>#<cr><C-w>w
 map <Leader>rt q:?!ruby<cr><cr>
 map <Leader>rw :%s/\s\+$//<cr>:w<cr>
