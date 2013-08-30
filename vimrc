@@ -79,6 +79,7 @@ map <Leader>j :CommandT app/assets/javascripts<cr>client/
 map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
 map <Leader>ng :sp ~/Dropbox/notes/git.txt<cr>
+map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<cr>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
@@ -169,9 +170,7 @@ set noincsearch
 set ignorecase smartcase
 set laststatus=2  " Always show status line.
 "set relativenumber
-" set number
-set nonumber
-set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
+set number
 set autoindent " always set autoindenting on
 set bg=light
 

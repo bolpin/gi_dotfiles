@@ -22,16 +22,6 @@ function grf() {
   git checkout $1
 }
 
-function detect_rvm_version {
-  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
-  [ "$gemset" != "" ] && gemset="@$gemset"
-  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
-  [ "$version" != "" ] && version="$version"
-  local full="$version$gemset"
-  [ "$full" != "" ] && echo "$full"
-}
-
-
 
 function git_branch_name {
   val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
@@ -63,14 +53,21 @@ function g {
 }
 compdef g=git
 
+function detect_rvm_version {
+  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
+  [ "$gemset" != "" ] && gemset="@$gemset"
+  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
+  [ "$version" != "" ] && version="$version"
+  local full="$version$gemset"
+  [ "$full" != "" ] && echo "$full"
+}
+
 function rrg {
   rake routes | grep $1
 }
 
-function take {
-  mkdir $1
-  cd $1
-}
+function take () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
 
 # Allows commit message without typing quotes (can't have quotes in the commit msg though).
 function gc {
@@ -79,39 +76,39 @@ function gc {
 
 
 function rmf(){
-   for file in $*
-   do
-      __rm_single_file $file
-   done
+  for file in $*
+  do
+    __rm_single_file $file
+  done
 }
 
 function __rm_single_file(){
-       if ! [ -d ~/.Trash/ ]
-       then
-               command /bin/mkdir ~/.Trash
-       fi
+  if ! [ -d ~/.Trash/ ]
+  then
+    command /bin/mkdir ~/.Trash
+  fi
 
-       if ! [ $# -eq 1 ]
-       then
-               echo "__rm_single_file: 1 argument required but $# passed."
-               exit
-       fi
+  if ! [ $# -eq 1 ]
+  then
+    echo "__rm_single_file: 1 argument required but $# passed."
+    exit
+  fi
 
-       if [ -e $1 ]
-       then
-               BASENAME=`basename $1`
-               NAME=$BASENAME
-               COUNT=0
-               while [ -e ~/.Trash/$NAME ]
-               do
-                       COUNT=$(($COUNT+1))
-                       NAME="$BASENAME.$COUNT"
-               done
+  if [ -e $1 ]
+  then
+    BASENAME=`basename $1`
+    NAME=$BASENAME
+    COUNT=0
+    while [ -e ~/.Trash/$NAME ]
+    do
+      COUNT=$(($COUNT+1))
+      NAME="$BASENAME.$COUNT"
+    done
 
-               command /bin/mv $1 ~/.Trash/$NAME
-       else
-               echo "No such file or directory: $file"
-       fi
+    command /bin/mv $1 ~/.Trash/$NAME
+  else
+    echo "No such file or directory: $file"
+  fi
 }
 
 #alias rm='rmf'
