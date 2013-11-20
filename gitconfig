@@ -20,15 +20,16 @@
   co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
-  ; lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  ; graph = log --graph --all --format=format:'%C(bold)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold white)%cn%C(reset) %C(white)%s%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-  ; gg = !git graph
-  ; g = !git graph -n
   ; loc = config --local
   ; glo = config --global
   ; peek = fetch -v --dry-run
-  ; change = !git --no-pager show -m --name-only 
-[apply]
+  co = checkout
+  ; ci = commit
+  ; st = status
+  ; br = branch
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p[apply]
   whitespace = nowarn
 [help]
   autocorrect = 1
@@ -41,31 +42,9 @@
     branch = auto
     interactive = auto
     ui = true
-; [color]
-;     ui = true
-;     branch = auto
-;     diff = auto
-;     status = auto
-;     interactive = auto
-; [color "branch"]
-;     current = yellow bold
-;     local = green bold
-;     remote = red bold
-; [color "diff"]
-;     meta = yellow bold
-;     frag = magenta bold
-;     old = red bold
-;     new = green bold
-; [color "status"]
-;     added = green bold
-;     changed = red bold
-;     untracked = cyan bold
-; [rerere]
-; 	enabled = 1
 
 [merge]
     tool = p4merge
-    ; ff = only
 [mergetool]
     prompt = false
     keepBackup = false
