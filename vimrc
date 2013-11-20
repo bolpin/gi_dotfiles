@@ -45,22 +45,34 @@ augroup END
 " ================
 
 let mapleader = ","
+" let mapleader=" "
 
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+
+" adjust viewports to the same size
+map <Leader>= <C-w>=
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 map <Leader>bb :!bundle install<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
+" format the entire file
+nmap <leader>c ggVG=
 map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
 map <Leader>co ggVG"*y
-map <Leader>cc :Rjcollection client/
-map <Leader>cj :Rjspec client/
-map <Leader>cm :Rjmodel client/
-map <Leader>ct :Rtemplate client/
-map <Leader>cv :Rjview client/
+map <Leader>ct :w<cr>:call RunCurrentTest()<CR>
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <Leader>dd odebugger<cr>puts 'debugger'<esc>:w<cr>
 map <leader>dh :execute 'NERDTreeToggle %'<CR>
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>ec :e ~/code/
@@ -73,10 +85,12 @@ map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>f :call OpenFactoryFile()<CR>
 map <Leader>fix :cnoremap % %<CR>
 map <Leader>fa :sp test/factories.rb<CR>
-map <Leader>h :CommandT<CR>
+" map <Leader>h :CommandT<CR>
+map <leader>h <C-w>h
 map <Leader>i mmgg=G`m<CR>
-map <Leader>j :CommandT app/assets/javascripts<cr>client/
-map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
+map <leader>j <C-w>j
+map <leader>k <C-w>k
+map <leader>l <C-w>l
 map <Leader>m :Rmodel 
 map <Leader>ng :sp ~/Dropbox/notes/git.txt<cr>
 map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<cr>
@@ -94,6 +108,7 @@ map <Leader>rm :e ~/Dropbox/notes/rubymine.txt<cr>
 map <Leader>rs :vsp <C-r>#<cr><C-w>w
 map <Leader>rt q:?!ruby<cr><cr>
 map <Leader>rw :%s/\s\+$//<cr>:w<cr>
+map <leader>s :split<cr>
 map <Leader>sc :sp db/schema.rb<cr>
 map <Leader>sg :sp<cr>:grep 
 map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
@@ -107,12 +122,12 @@ map <Leader>ss ds)i <esc>:w<cr>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
-" map <Leader>t :w<cr>:call RunCurrentTest()<CR>
-map <Leader>t :w<cr>:!rake cucumber:controller_wip<CR>
+map <Leader>t :CommandT<cr>
+" map <Leader>t :w<cr>:!rake cucumber:controller_wip<CR>
 map <Leader>tr !touch tmp/restart.txt
-map <Leader>y :!rspec --drb %<cr>
 nnoremap <Leader>u :diffupdate<cr>
 map <Leader>ut :Runittest<cr>
+map <leader>v :vsplit<cr>
 map <Leader>vc :RVcontroller<cr>
 map <Leader>vf :RVfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
@@ -123,6 +138,7 @@ map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
 map <Leader>vv :RVview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
+map <Leader>y :!rspec --drb %<cr>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -262,7 +278,7 @@ function! RunCurrentTest()
       call SetTestRunner("!cucumber")
       exec g:bjo_test_runner g:bjo_test_file
     elseif match(expand('%'), '_spec\.rb$') != -1
-      call SetTestRunner("!bin/rspec")
+      call SetTestRunner("!rspec")
       exec g:bjo_test_runner g:bjo_test_file
     else
       call SetTestRunner("!ruby -Itest")
@@ -283,7 +299,7 @@ function! RunCurrentLineInTest()
     call SetTestFileWithLine()
   end
 
-  exec "!bin/rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
+  exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
 endfunction
 
 function! SetTestFile()
@@ -297,12 +313,13 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap <Tab> <C-P>
-
 " Let's be reasonable, shall we?
 nmap k gk
 nmap j gj
 
+
+"autosave all when focus is lost (and ignore warnings from untitled buffers)
+au FocusLost * silent! wa
 
 " Set up some useful Rails.vim bindings for working with Backbone.js
 autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
