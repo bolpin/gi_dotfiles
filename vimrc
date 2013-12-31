@@ -96,6 +96,7 @@ map <Leader>ng :sp ~/Dropbox/notes/git.txt<cr>
 map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<cr>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<cr>
+map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<cr> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -390,6 +391,7 @@ colorscheme vividchalk
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
+  colorscheme vividchalk
   syntax on
   set hlsearch
 endif
