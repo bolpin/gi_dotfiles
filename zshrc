@@ -57,7 +57,7 @@ source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions
 
 # Customize to your needs...
-export PATH=bin:/Users/brian/.rvm/gems/ruby-1.9.2-p180/bin:/Users/brian/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/brian/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/brian/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=$PATH:bin:/Users/brian/.rvm/gems/ruby-1.9.2-p180/bin:/Users/brian/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/brian/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/brian/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/texbin
