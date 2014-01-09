@@ -6,6 +6,7 @@ elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
 fi
 
+alias ad="cd ~/src/unisporkal/asset_detail"
 alias amend="git commit --amend"
 alias asu="cd ~/code/rails/activesupport"
 alias aliases='vim ~/.dotfiles/zsh/aliases'
@@ -63,7 +64,7 @@ alias -g M='| more'
 alias newscreen="screen -S foo"
 # alias l='cd ~/code/learn'
 alias -g L='| less'
-alias p='cd ~/src/unisporkal/purchase; gco master'
+alias p='cd ~/src/unisporkal/purchase'
 alias pc='production-console'
 alias parallel='rdtp && rake parallel:prepare test:parallel_with_specs'
 alias patch='git format-patch HEAD^ --stdout > patch.diff'
@@ -82,7 +83,7 @@ alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump 
 alias rdm="be rake db:migrate"
 alias rdtp="be rake db:test:prepare"
 alias rs='bundle install && rails server -p 3000'
-alias s='cd ~/src/unisporkal/search; gco master'
+alias s='cd ~/src/unisporkal/search'
 alias sand='cd ~/src/sandbox'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
 alias sfh='cd ~/code/speaking-for-hackers-book'
@@ -101,7 +102,7 @@ alias staging='git push heroku-staging master'
 alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped." && repush'
 alias track='git checkout -t'
 alias u='cd ~/src/unisporkal'
-alias u='cd ..'
+alias us='cd ~/src/unisporkal/gems/unisporkal_styles'
 alias v='vim'
 alias vi='mvim --remote-silent'
 alias visa='head -n 20 ~/Dropbox/notes/project-notes.txt'
