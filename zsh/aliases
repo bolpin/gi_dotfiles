@@ -69,6 +69,8 @@ alias pc='production-console'
 alias parallel='rdtp && rake parallel:prepare test:parallel_with_specs'
 alias patch='git format-patch HEAD^ --stdout > patch.diff'
 alias prepdb='dbprep'
+alias rbinfo='remote_branch_info'
+alias rc='rails console'
 alias remore='!! | more'
 alias reguard='killall -9 ruby ; guard'
 alias rerake='!! && rake'
@@ -78,11 +80,11 @@ alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp 
 alias retagwithcoffee='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * && coffeetags -R -f >> tags'
 alias repush="gpr && git push"
 alias review="git diff master"
-alias rc='rails console'
 alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
 alias rdm="be rake db:migrate"
 alias rdtp="be rake db:test:prepare"
 alias rs='bundle install && rails server -p 3000'
+alias rxt='cd ~/src/Red_X_Tracker_source_code/'
 alias s='cd ~/src/unisporkal/search'
 alias sand='cd ~/src/sandbox'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
