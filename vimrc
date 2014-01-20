@@ -61,7 +61,7 @@ imap <right> <nop>
 
 " adjust viewports to the same size
 map <Leader>= <C-w>=
-vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <Leader>b :b#<cr>
 map <Leader>bb :!bundle install<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
@@ -179,9 +179,10 @@ set autoread
 set wmh=0
 set viminfo+=!
 set guioptions-=T
-set guifont=Triskweline_10:h10
-set et
-set sw=2
+" set guifont=Triskweline_10:h10
+set shiftwidth=2 
+set tabstop=2 
+set expandtab 
 set smarttab
 set noincsearch
 set ignorecase smartcase
