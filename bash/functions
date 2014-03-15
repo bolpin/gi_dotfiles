@@ -1,3 +1,74 @@
+
+# Show ten most used commands in history:
+function common_commands {
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+# Creating a remote tracking branch
+function gbt { 
+  #git branch --track $2 $1/$2
+  #git checkout $2
+  git branch --track $1 "origin/$1"
+  git checkout $1
+}
+
+function git-new-remote-tracking {
+  git checkout -b $1 && git push -u origin $1
+}
+
+
+function take () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+# Allows commit message without typing quotes (can't have quotes in the commit msg though).
+function gc {
+  git commit -m "$*"
+}
+
+
+function rmf(){
+  for file in $*
+  do
+    __rm_single_file $file
+  done
+}
+
+function __rm_single_file(){
+  if ! [ -d ~/.Trash/ ]
+  then
+    command /bin/mkdir ~/.Trash
+  fi
+
+  if ! [ $# -eq 1 ]
+  then
+    echo "__rm_single_file: 1 argument required but $# passed."
+    exit
+  fi
+
+  if [ -e $1 ]
+  then
+    BASENAME=`basename $1`
+    NAME=$BASENAME
+    COUNT=0
+    while [ -e ~/.Trash/$NAME ]
+    do
+      COUNT=$(($COUNT+1))
+      NAME="$BASENAME.$COUNT"
+    done
+
+    command /bin/mv $1 ~/.Trash/$NAME
+  else
+    echo "No such file or directory: $file"
+  fi
+}
+
+
+function remote_branch_info(){
+  for k in `git branch -r | perl -pe 's/^..(.*?)( ->.*)?$/\1/'`
+  do 
+    echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr %Cred%an %Creset" $k -- | head -n 1`\\t$k 
+  done | sort -r
+}
+
 # Switch to a gem directory, trying to match your name the best
 function cdgem {
   gem_dir=`gem env | grep INSTALLATION | cut -d' ' -f6`
@@ -6,29 +77,53 @@ function cdgem {
 }
 
 function sgi {
-sudo gem install $1
+  sudo gem install $1
 }
 
 function sagi {
-sudo apt-get -y install $1 
+  sudo apt-get -y install $1 
 }
 
 function syi {
-sudo yum -y install $1
+  sudo yum -y install $1
 }
 
 function glg { 
-gem list | grep $1
+  gem list | grep $1
 }
 
 
 function rrg { 
-bundle exec rake routes | grep $1
+  bundle exec rake routes | grep $1
 }
+
 
 #################
 #   git stuff   #
 #################
+git_sha() {
+    git rev-parse --short HEAD 2>/dev/null
+}
+
+function git_branch_name {
+  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+  echo "$val"
+}
+
+function git-done {
+  branch=`git_branch_name`
+  git checkout master && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
+}
+
+
+function git-on-master {
+  branch=`git_branch_name`
+  git checkout master && git pull --rebase 
+  git checkout $branch
+  git rebase master
+  }
+
+
 function parse_git_branch {
   val=`git_branch_name | sed 's_\(.*\)_(\1)_'`
   echo "$val"
@@ -47,18 +142,13 @@ function git-new-remote-tracking {
   git checkout -b $1 && git push -u origin $1
 }
 
-function git_branch_name {
-  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
-  echo "$val"
-}
-
-function git-done {
+function git_done {
   branch=`git_branch_name`
   git checkout master && git pull --rebase 
   git checkout $branch && git rebase master && git checkout master && git merge $branch && bundle install && bundle exec rake db:migrate && bundle exec rake && git push && git branch -d $branch && git push origin :$branch
 }
 
-function git-nuke {
+function git_nuke {
   git branch -D $1 && git push origin :$1
 }
 
@@ -74,4 +164,5 @@ function g {
     git status
   fi
 }
+# compdef g=git
 

@@ -1,20 +1,12 @@
-" Use Pathogen:
+" Use Pathogen - needed for tComment
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" ========================================================================
-" Vundle stuff
-" ========================================================================
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Let Vundle manage Vundle (required)!
 Bundle 'gmarik/vundle'
-
-" My bundles
-" Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
-" Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
@@ -26,13 +18,9 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'slim-template/vim-slim'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/loremipsum'
 
-" ================
-" Ruby stuff
-" ================
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
@@ -45,7 +33,6 @@ augroup END
 " ================
 
 let mapleader = ","
-" let mapleader=" "
 
 
 " disable arrow keys
@@ -61,6 +48,8 @@ imap <right> <nop>
 
 " adjust viewports to the same size
 map <Leader>= <C-w>=
+nnoremap <leader>a :Ack
+nnoremap <leader>A :Ack <c-r><c-w><CR>
 vmap <Leader>b :b#<cr>
 map <Leader>bb :!bundle install<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>

@@ -29,8 +29,12 @@
   ; br = branch
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
-  dump = cat-file -p[apply]
+  ; dump = cat-file -p[apply]
+  dump = cat-file -p
   whitespace = nowarn
+  ci = commit
+  st = status
+  br = branch
 [help]
   autocorrect = 1
 [github]
