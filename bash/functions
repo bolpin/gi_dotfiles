@@ -129,15 +129,6 @@ function parse_git_branch {
   echo "$val"
 }
 
-function detect_rvm_version {
-  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
-  [ "$gemset" != "" ] && gemset="@$gemset"
-  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
-  [ "$version" != "" ] && version="$version"
-  local full="$version$gemset"
-  [ "$full" != "" ] && echo "$full"
-}
-
 function git-new-remote-tracking {
   git checkout -b $1 && git push -u origin $1
 }
