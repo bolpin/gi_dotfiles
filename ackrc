@@ -1,17 +1,12 @@
+# follow symlinks
+--follow
+
+--type-add
+ruby=.haml,.feature,.scss,.coffee
+
 --ignore-dir=vendor
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=doc
 --ignore-dir=coverage
 --ignore-dir=.idea/
-
-# follow symlinks
---follow
-
---type-add
-ruby=.haml,.feature,.scss,.coffee
---ignore-dir=vendor
---ignore-dir=log
---ignore-dir=tmp
---ignore-dir=doc
---ignore-dir=coverage
