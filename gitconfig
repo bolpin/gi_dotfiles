@@ -23,7 +23,6 @@
   ; loc = config --local
   ; glo = config --global
   ; peek = fetch -v --dry-run
-  co = checkout
   ; ci = commit
   ; st = status
   ; br = branch
