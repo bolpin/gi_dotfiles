@@ -1,12 +1,18 @@
-" Use Pathogen - needed for tComment
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My bundles
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'tomtom/tcomment_vim'
+"Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
@@ -16,10 +22,11 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
-Bundle 'vim-scripts/ruby-matchit'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/ack.vim'
 Bundle 'vim-scripts/loremipsum'
+
+runtime macros/matchit.vim
 
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -30,10 +37,9 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
-" ================
+
 
 let mapleader = ","
-
 
 " disable arrow keys
 map <up> <nop>
