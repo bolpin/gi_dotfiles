@@ -9,8 +9,9 @@ Bundle 'gmarik/vundle'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My bundles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'tomtom/tcomment_vim'
 "Bundle 'ervandew/supertab'
+"Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-cucumber'
@@ -22,10 +23,15 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
-"Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/ack.vim'
-Bundle 'vim-scripts/loremipsum'
 
+" Snippets 
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+
+" Enable matching in Ruby,etc.
 runtime macros/matchit.vim
 
 syntax on                 " Enable syntax highlighting
@@ -129,6 +135,7 @@ map <Leader>vf :RVfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>vm :RVmodel<cr>
+map <Leader>vs :vnew /Users/brian/.vim/bundle/vim-snippets/snippets/ruby.snippets 
 map <Leader>vu :RVunittest<CR>
 map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
 map <Leader>vv :RVview<cr>
