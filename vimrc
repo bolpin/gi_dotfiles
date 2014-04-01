@@ -116,7 +116,9 @@ map <Leader>sg :sp<cr>:grep
 map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
 map <Leader>sm :RSmodel 
 map <Leader>sp yss<p>
-map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
+map <Leader>sn :vs ~/.vim/snippets/ruby.snippets<CR>
+map <Leader>snj :vs ~/.vim/snippets/coffee.snippets<CR>
+map <Leader>snr :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 map <Leader>so :so %<cr>
 map <Leader>splunk :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
@@ -135,7 +137,6 @@ map <Leader>vf :RVfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
 map <Leader>vi :tabe ~/.vimrc<CR>
 map <Leader>vm :RVmodel<cr>
-map <Leader>vs :vnew /Users/brian/.vim/bundle/vim-snippets/snippets/ruby.snippets 
 map <Leader>vu :RVunittest<CR>
 map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
 map <Leader>vv :RVview<cr>

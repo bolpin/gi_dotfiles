@@ -1,0 +1,23 @@
+# jasmine
+snippet desc 
+	describe "${1:behavior}", ->
+		beforeEach ->
+			loadFixtures "${2:search_page.html}"
+			spyOn(${3:object}, '${4:method}').andReturn(${5:result})
+
+		it "${6:does something}", ->
+			expect(${7}).toEqual(${8})
+
+snippet befe
+	beforeEach ->
+		${0}
+
+snippet it
+	it "${1:does something}", ->
+		${2}
+
+snippet spy
+	spyOn(${1:object}, '${2:method}').andReturn(${3:result})
+
+snippet exp
+	expect(${1}).toEqual(${2})
