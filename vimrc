@@ -10,7 +10,7 @@ Bundle 'gmarik/vundle'
 " My bundles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Bundle 'ervandew/supertab'
-"Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-bundler'
@@ -24,6 +24,8 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ack.vim'
+Bundle 'slim-template/vim-slim.git'
+Bundle 'godlygeek/tabular'
 
 " Snippets 
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -44,6 +46,10 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
 
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
 
 let mapleader = ","
 
@@ -164,6 +170,9 @@ map <F4> :exec "Ack " . expand("<cword>")<CR>
 " Emacs-like beginning and end of line.
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
+
+" remove trailing whitespace
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 vnoremap < <gv
 vnoremap > >gv
@@ -317,6 +326,9 @@ function! SetTestFileWithLine()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " show pesky invisible characters
+set listchars=nbsp:¬,eol:¶,tab:>-,extends:»,precedes:«,trail:•,trail:~,extends:>,precedes:<
+set list
 
 " Let's be reasonable, shall we?
 nmap k gk
@@ -387,6 +399,22 @@ map <Leader>n :call RenameFile()<cr>
 syntax enable
 colorscheme vividchalk
 
+" ========================================================================
+" Cucumber tables.vim 
+" ========================================================================
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+ 
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 
 " ========================================================================
 " Stuff not set by me
@@ -433,4 +461,5 @@ endif " has("autocmd")
 " ========================================================================
 
 highlight Search guibg=DarkRed ctermbg=DarkRed
+
 
