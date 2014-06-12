@@ -3,19 +3,25 @@
   email = bolpin@gettyimages.com
 ; 	name = Brian Olpin
 ; 	email = bolpin@gmail.com 
+
 [http]
   sslVerify = false
+
 [core]
   editor = vim --noplugin
   autocrlf = false
   excludesfile = ~/.gitignore_global
+
 [push]
-  # Only push branches that have been set up to track a remote branch.
+  # Only push branches that have been set up to track a remote branch(?)
   default = current
+
 [branch]
   autosetuprebase = always
+
 [credential]
   helper = osxkeychain
+
 [alias]
   co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -23,19 +29,17 @@
   ; loc = config --local
   ; glo = config --global
   ; peek = fetch -v --dry-run
-  ; ci = commit
-  ; st = status
-  ; br = branch
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
-  ; dump = cat-file -p[apply]
   dump = cat-file -p
   whitespace = nowarn
   ci = commit
   st = status
   br = branch
+
 [help]
   autocorrect = 1
+
 [github]
   user = bolpin
 
@@ -48,23 +52,29 @@
 
 [merge]
     tool = p4merge
+
 [mergetool]
     prompt = false
     keepBackup = false
+
 [mergetool "p4merge"]
     path = /Applications/p4merge.app/Contents/Resources/launchp4merge 
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [diff]
     tool = p4merge
+
 [difftool]
     prompt = false
+
 [difftool "p4merge"]
     path = /Applications/p4merge.app/Contents/Resources/launchp4merge
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
