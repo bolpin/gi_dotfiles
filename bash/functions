@@ -1,3 +1,15 @@
+# unipsorkal startup (run from a tmux session)
+function uv { 
+  tmux rename-session -s unisporkal
+  tmux new-window -n unisporkal
+  tmux send-keys 'u;cd search; rails s -p 5000' 'C-m'
+
+  tmux split-window -h -p 50
+  tmux send-keys 'u;cd asset_detail;rails s -p 4000' 'C-m'
+
+  tmux split-window -v -p 50
+  tmux send-keys 'u;cd sign_in;rails s -p 2000' 'C-m'
+}
 
 # Show ten most used commands in history:
 function common_commands {
