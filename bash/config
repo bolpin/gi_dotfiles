@@ -17,7 +17,7 @@ stty stop undef
 #################
 #  prompt       #
 #################
-export PS1='\u \[\e[1;34m\]\w \[\e[1;30m\]$(ruby -e "print RUBY_VERSION")\[\e[1;33m\]$(__git_ps1 " %s\[\e[1;37m\] $(git_sha)") \[\e[1;32m\]\$\[\e[1;00m\] '
+export PS1='\u \[\e[1;34m\]\w \[\e[1;30m\]$(ruby -e "print RUBY_VERSION")\[\e[1;33m\]$(__git_ps1 " %s\[\e[1;30m\] $(git_sha)") \[\e[1;32m\]\$\[\e[1;00m\] '
 
 
 #####################
