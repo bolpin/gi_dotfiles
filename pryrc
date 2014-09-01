@@ -1,12 +1,10 @@
 Pry.config.editor = 'vim'
 Pry.config.commands.alias_command "q", "exit-all"
 
-if defined?(PryDebugger)
-  Pry.commands.alias_command 'c', 'continue'
-  Pry.commands.alias_command 's', 'step'
-  Pry.commands.alias_command 'n', 'next'
-  Pry.commands.alias_command 'f', 'finish'
-end
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+Pry.commands.alias_command 'f', 'finish'
 
 # # Toys methods
 # # See https://gist.github.com/807492

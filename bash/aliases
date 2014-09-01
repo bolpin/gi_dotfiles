@@ -10,7 +10,11 @@ fi
 # Show ten most used commands in history:
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 
+alias life='cd ~/src/life'
+
+
 alias ad='cd ~/src/unisporkal/asset_detail'
+alias ang='cd ~/src/sandbox/angular-app'
 alias amend="git commit --amend"
 alias asu="cd ~/code/rails/activesupport"
 alias aliases='vim ~/.dotfiles/bash/aliases'
@@ -60,7 +64,7 @@ alias hpush='git push heroku'
 alias irb='irb --readline -r irb/completion'
 alias ilox='cat ~/Dropbox/notes/ilox.txt'
 alias killruby='killall -9 ruby'
-alias n='cd ~/src/Newsmaker'
+alias n='cd ~/src/newsmaker'
 alias newscreen="screen -S foo"
 # alias l='cd ~/code/learn'
 alias p='cd ~/src/unisporkal/purchase'
@@ -88,6 +92,7 @@ alias rs='bundle install && rails server -p 3000'
 alias s='cd ~/src/unisporkal/search'
 alias sand='cd ~/src/sandbox'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
+alias si='cd ~/src/unisporkal/sign_in'
 alias sg='cd ~/src/unisporkal/gems/unisporkal_styleguide'
 alias sfh='cd ~/code/speaking-for-hackers-book'
 alias shpush='rake && hpush'

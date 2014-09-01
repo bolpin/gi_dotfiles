@@ -1,4 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
@@ -32,6 +33,7 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
+" Bundle "matthewsimo/angular-vim-snippets"
 
 " Enable matching in Ruby,etc.
 runtime macros/matchit.vim
@@ -71,6 +73,7 @@ nnoremap <leader>A :Ack <c-r><c-w><CR>
 vmap <Leader>b :b#<cr>
 map <Leader>bb :!bundle install<cr>
 nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
+map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 " format the entire file
 nmap <leader>c ggVG=
@@ -78,6 +81,7 @@ map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
 map <Leader>co ggVG"*y
 map <Leader>ct :w<cr>:call RunCurrentTest()<CR>
+map <Leader>ctf :CommandTFlush<CR>:CommandT<CR>
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>dh :execute 'NERDTreeToggle %'<CR>
@@ -111,7 +115,6 @@ map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
 map <Leader>ppj :.!python -m json.tool<cr>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
 map <Leader>rm :e ~/Dropbox/notes/rubymine.txt<cr>
 map <Leader>rs :vsp <C-r>#<cr><C-w>w
 map <Leader>rt q:?!ruby<cr><cr>
@@ -133,6 +136,7 @@ map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
 map <Leader>t :CommandT<cr>
+map <Leader>tn :e ~/Dropbox/notes/troubleshooting-notes.txt<cr>
 " map <Leader>t :w<cr>:!rake cucumber:controller_wip<CR>
 map <Leader>tr !touch tmp/restart.txt
 nnoremap <Leader>u :diffupdate<cr>
@@ -404,7 +408,7 @@ colorscheme vividchalk
 " Cucumber tables.vim 
 " ========================================================================
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
- 
+
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
