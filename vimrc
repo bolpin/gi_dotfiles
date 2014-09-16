@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-
+Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
@@ -20,7 +20,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'wincent/Command-T'
 Plugin 'vim-scripts/ack.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
@@ -29,18 +28,12 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
-" Enable matching in Ruby,etc.
+call vundle#end()
+
 runtime macros/matchit.vim
 
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
-
-augroup myfiletypes
-  " Clear old autocmds in group
-  autocmd!
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-augroup END
 
 augroup myvimrc
   au!
@@ -67,7 +60,6 @@ vmap <Leader>b :b#<cr>
 map <Leader>bb :!bundle install<cr>
 map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
-" format the entire file
 nmap <leader>c ggVG=
 map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
@@ -82,15 +74,12 @@ map <Leader>ec :e ~/code/
 nnoremap <Leader>g :diffget<cr>
 map <Leader>gac :Gcommit -m -a ""<LEFT>
 map <Leader>gc :Gcommit -m ""<LEFT>
-map <Leader>gr :e ~/Dropbox/notes/journal<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>f :call OpenFactoryFile()<CR>
 map <Leader>fix :cnoremap % %<CR>
-map <Leader>fa :sp test/factories.rb<CR>
 " map <Leader>h :CommandT<CR>
 map <leader>h <C-w>h
-map <Leader>i mmgg=G`m<CR>
 map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>l <C-w>l
@@ -119,9 +108,8 @@ map <Leader>sg :sp<cr>:grep
 map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
 map <Leader>sm :RSmodel 
 map <Leader>sp yss<p>
-map <Leader>sn :vs ~/.vim/snippets/ruby.snippets<CR>
-map <Leader>snj :vs ~/.vim/snippets/coffee.snippets<CR>
-map <Leader>snr :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
+map <Leader>sng :vs ~/.vim/bundle/vim-snippets/snippets/coffee/angular_coffee.snippets<CR>
+map <Leader>sn :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 map <Leader>so :so %<cr>
 map <Leader>splunk :sp ~/Dropbox/notes/splunk_notes.txt<cr>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
@@ -191,7 +179,7 @@ set guioptions-=T
 " set guifont=Triskweline_10:h10
 set shiftwidth=2 
 set tabstop=2 
-set expandtab 
+set expandtab
 set smarttab
 set noincsearch
 set ignorecase smartcase
@@ -325,8 +313,8 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " " show pesky invisible characters
-set listchars=nbsp:¬,eol:¶,tab:>-,extends:»,precedes:«,trail:•,trail:~,extends:>,precedes:<
-set list
+" set listchars=nbsp:¬,eol:¶,tab:>-,extends:»,precedes:«,trail:•,trail:~,extends:>,precedes:<
+" set list
 
 " Let's be reasonable, shall we?
 nmap k gk
@@ -336,17 +324,8 @@ nmap j gj
 "autosave all when focus is lost (and ignore warnings from untitled buffers)
 au FocusLost * silent! wa
 
-" Set up some useful Rails.vim bindings for working with Backbone.js
-autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
-autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
-
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 set formatoptions-=or
-
 
 function! OpenJasmineSpecInBrowser()
   let filename = expand('%')
@@ -357,17 +336,16 @@ function! OpenJasmineSpecInBrowser()
   silent exec "!open ~/bin/chrome" url
 endfunction
 
-" set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-let g:CommandTMaxHeight=40
-" let g:CommandTMatchWindowAtTop=1
+let g:CommandTMaxHeight=30
+" let g:commandtmatchwindowattop=1
 
-" Don't wait so long for the next keypress (particularly in ambigious Leader
-" situations.
+" Don't wait so long for the next keypress (particularly in ambigious Leader situations.
 set timeoutlen=500
 
-" Don't go past 100 chars on levelup:
-autocmd BufNewFile,BufRead /Users/brian/code/levelup/*.rb set colorcolumn=100
+" Don't go past 100 chars on search app:
+" autocmd BufNewFile,BufRead /Users/bolpin/src/unisporkal/search/*.rb set colorcolumn=100
 
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
