@@ -1,39 +1,33 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
 
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" My bundles
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
-Bundle 'vim-scripts/ack.vim'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'godlygeek/tabular'
-
-" Snippets 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-" Bundle "matthewsimo/angular-vim-snippets"
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'wincent/Command-T'
+Plugin 'vim-scripts/ack.vim'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'godlygeek/tabular'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " Enable matching in Ruby,etc.
 runtime macros/matchit.vim
@@ -65,14 +59,12 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-
 " adjust viewports to the same size
 map <Leader>= <C-w>=
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
 vmap <Leader>b :b#<cr>
 map <Leader>bb :!bundle install<cr>
-nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 " format the entire file
@@ -111,6 +103,8 @@ map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<cr>
 map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<cr> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
+nmap <Leader>pi :source ~/.vimrc<cr>:PluginInstall<cr>
+map <Leader>pl :cd ~/Dropbox/pl<cr>
 map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
 map <Leader>ppj :.!python -m json.tool<cr>
 map <Leader>ra :%s/
@@ -181,7 +175,6 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 vnoremap < <gv
 vnoremap > >gv
 
-set nocompatible
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
 set ruler		" show the cursor position all the time
