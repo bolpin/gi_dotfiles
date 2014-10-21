@@ -27,6 +27,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Bundle 'chilicuil/vim-sml-coursera'
 
 call vundle#end()
 
@@ -56,85 +57,84 @@ imap <right> <nop>
 map <Leader>= <C-w>=
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
-vmap <Leader>b :b#<cr>
-map <Leader>bb :!bundle install<cr>
-map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<cr>
-vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
-nmap <leader>c ggVG=
+vmap <Leader>b :b#<CR>
+map <Leader>bb :!bundle install<CR>
+map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<CR>
+vmap <Leader>bed "td?describe<CR>obed<tab><esc>"tpkdd/end<CR>o<esc>:nohl<CR>
+" cleanup (formatting of) code:
+nmap <leader>c ggVG= 
 map <Leader>cc :!cucumber --drb %<CR>
+" cd to current file
+map <Leader>cd :cd %:p:h<CR>
 map <Leader>cu :Tabularize /\|<CR>
 map <Leader>co ggVG"*y
-map <Leader>ct :w<cr>:call RunCurrentTest()<CR>
+map <Leader>ct :w<CR>:call RunCurrentTest()<CR>
 map <Leader>ctf :CommandTFlush<CR>:CommandT<CR>
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>dh :execute 'NERDTreeToggle %'<CR>
-map <Leader>dr :e ~/Dropbox<cr>
+map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<CR>
+map <leader>d :NERDTreeToggle %<CR>
+map <Leader>dr :e ~/Dropbox<CR>
 map <Leader>ec :e ~/code/
-nnoremap <Leader>g :diffget<cr>
+nnoremap <Leader>g :diffget<CR>
 map <Leader>gac :Gcommit -m -a ""<LEFT>
 map <Leader>gc :Gcommit -m ""<LEFT>
 map <Leader>gs :Gstatus<CR>
-map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
+map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 map <Leader>f :call OpenFactoryFile()<CR>
 map <Leader>fix :cnoremap % %<CR>
-" map <Leader>h :CommandT<CR>
 map <leader>h <C-w>h
 map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>l <C-w>l
 map <Leader>m :Rmodel 
-map <Leader>ng :sp ~/Dropbox/notes/git.txt<cr>
-map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<cr>
-map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
-map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<cr>
-map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<cr>
+map <Leader>ng :sp ~/Dropbox/notes/git.txt<CR>
+map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<CR>
+map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
+map <Leader>np :sp ~/Dropbox/notes/project-notes.txt<CR>
+map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<CR>
+map <Leader>nt :e ~/Dropbox/notes/todo.txt<CR>
+map <Leader>nu :e ~/Dropbox/notes/troubleshooting-notes.txt<CR>
+map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 map <Leader>o :call RunCurrentLineInTest()<CR>
-nnoremap <Leader>p :diffput<cr> 
-map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<cr>
-nmap <Leader>pi :source ~/.vimrc<cr>:PluginInstall<cr>
-map <Leader>pl :cd ~/Dropbox/pl<cr>
-map <Leader>pn :sp ~/Dropbox/notes/project-notes.txt<cr>
-map <Leader>ppj :.!python -m json.tool<cr>
+nnoremap <Leader>p :diffput<CR> 
+map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<CR>
+nmap <Leader>pi :source ~/.vimrc<CR>:PluginInstall<CR>
+map <Leader>ppj :.!python -m json.tool<CR>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
-map <Leader>rm :e ~/Dropbox/notes/rubymine.txt<cr>
-map <Leader>rs :vsp <C-r>#<cr><C-w>w
-map <Leader>rt q:?!ruby<cr><cr>
-map <Leader>rw :%s/\s\+$//<cr>:w<cr>
-map <leader>s :split<cr>
-map <Leader>sc :sp db/schema.rb<cr>
-map <Leader>sg :sp<cr>:grep 
-map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
+map <Leader>rs :vsp <C-r>#<CR><C-w>w
+map <Leader>rt q:?!ruby<CR><CR>
+map <Leader>rw :%s/\s\+$//<CR>:w<CR>
+map <leader>s :split<CR>
+map <Leader>sc :sp db/schema.rb<CR>
+map <Leader>sg :sp<CR>:grep 
+map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 map <Leader>sm :RSmodel 
 map <Leader>sp yss<p>
-map <Leader>sng :vs ~/.vim/bundle/vim-snippets/snippets/coffee/angular_coffee.snippets<CR>
 map <Leader>sn :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
-map <Leader>so :so %<cr>
-map <Leader>splunk :sp ~/Dropbox/notes/splunk_notes.txt<cr>
-map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
-map <Leader>ss ds)i <esc>:w<cr>
+map <Leader>sng :vs ~/.vim/bundle/vim-snippets/snippets/coffee/angular_coffee.snippets<CR>
+map <Leader>sns :vs ~/.vim/bundle/vim-snippets/snippets/sml.snippets<CR>
+map <Leader>so :so %<CR>
+map <Leader>sq j<c-v>}klllcs<esc>:wq<CR>
+map <Leader>ss ds)i <esc>:w<CR>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
-map <Leader>t :CommandT<cr>
-map <Leader>tn :e ~/Dropbox/notes/troubleshooting-notes.txt<cr>
-" map <Leader>t :w<cr>:!rake cucumber:controller_wip<CR>
+map <Leader>t :CommandT<CR>
+" map <Leader>t :w<CR>:!rake cucumber:controller_wip<CR>
 map <Leader>tr !touch tmp/restart.txt
-nnoremap <Leader>u :diffupdate<cr>
-map <Leader>ut :Runittest<cr>
-map <leader>v :vsplit<cr>
-map <Leader>vc :RVcontroller<cr>
-map <Leader>vf :RVfunctional<cr>
-map <Leader>vg :vsp<cr>:grep 
+nnoremap <Leader>u :diffupdate<CR>
+map <Leader>ut :Runittest<CR>
+map <leader>v :vsplit<CR>
+map <Leader>vc :RVcontroller<CR>
+map <Leader>vf :RVfunctional<CR>
+map <Leader>vg :vsp<CR>:grep 
 map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>vm :RVmodel<cr>
+map <Leader>vm :RVmodel<CR>
 map <Leader>vu :RVunittest<CR>
-map <Leader>vt :sp ~/Dropbox/notes/vim-tips.txt<cr>
-map <Leader>vv :RVview<cr>
+map <Leader>vv :RVview<CR>
 map <Leader>w <C-w>w
-map <Leader>x :exec getline(".")<cr>
-map <Leader>y :!rspec --drb %<cr>
+map <Leader>x :exec getline(".")<CR>
+map <Leader>y :!rspec --drb %<CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -142,7 +142,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
-map <C-h> :nohl<cr>
+map <C-h> :nohl<CR>
 imap <C-l> :<Space>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
@@ -162,6 +162,7 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 
 vnoremap < <gv
 vnoremap > >gv
+
 
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
@@ -370,7 +371,7 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <Leader>n :call RenameFile()<cr>
+map <Leader>n :call RenameFile()<CR>
 
 syntax enable
 colorscheme vividchalk

@@ -13,6 +13,9 @@ fi
 alias life='cd ~/src/life'
 
 
+alias fastuni='~/src/unisporkal/tools/uni/bin/uni'
+
+alias ac='cd ~/src/unisporkal/account'
 alias ad='cd ~/src/unisporkal/asset_detail'
 alias ang='cd ~/src/sandbox/angular-app'
 alias amend="git commit --amend"
@@ -49,6 +52,8 @@ alias ghelp='cat ~/Dropbox/notes/git.txt'
 alias get='sudo apt-get install'
 alias goc='cd ~/rails/cams'
 alias gog='cd ~/src/unisporkal/gems'
+alias gop='cd ~/pl'
+alias gos='cd ~/src/sandbox/angular-sandbox'
 alias gov='cd ~/src/unisporkal/puppet/modules/unisporkal/.rspec_system/vagrant_projects/centos-64-x64'
 alias gpush='echo "Use gp!" && git push'
 alias gp='git push'
@@ -64,6 +69,7 @@ alias hpush='git push heroku'
 alias irb='irb --readline -r irb/completion'
 alias ilox='cat ~/Dropbox/notes/ilox.txt'
 alias killruby='killall -9 ruby'
+alias la='cd ~/src/unisporkal/landing'
 alias n='cd ~/src/newsmaker'
 alias newscreen="screen -S foo"
 # alias l='cd ~/code/learn'
