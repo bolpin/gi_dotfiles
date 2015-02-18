@@ -6,7 +6,7 @@
 --ignore-dir=.idea/
 --ignore-dir=node_modules/
 
---ignore-file=is:tags
+--ignore=is:tags
 
 # follow symlinks
 --follow
