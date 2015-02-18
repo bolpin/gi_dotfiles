@@ -1,3 +1,44 @@
+# s() {
+#   if [[ $PWD =~ /sign_in ]]; then
+#     port=2000
+#   elif [[ $PWD =~ /purchase ]]; then
+#     port=3000
+#   elif [[ $PWD =~ /asset_detail ]]; then
+#     port=4000
+#   elif [[ $PWD =~ /search ]]; then
+#     port=5000
+#   elif [[ $PWD =~ /collaboration ]]; then
+#     port=7000
+#   fi
+#
+#   app=$(shortpwd)
+#   echo -e "\033]0;💡  ${app%/}  💡\007\r"
+#   svcwatch=1 rails s -p $port
+# }
+#
+# shortpwd()
+# {
+#   sp=$1
+#   pwd="${PWD/$HOME/~}"
+#   pwd="${pwd/~\/src\/unisporkal\/sign_in/📝$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/purchase/💰$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/asset_detail/📷$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/search/🔎$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/collaboration/💗$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/landing/🏡$sp}"
+#   pwd="${pwd/~\/src\/unisporkal\/gems/💎$sp}"
+#   pwd="${pwd/💎$sp\/unisporkal_engine/💎$sp/🚒$sp}"
+#   pwd="${pwd/💎$sp\/unisporkal_styles/💎$sp/🎨$sp}"
+#   pwd="${pwd/💎$sp\/authentication/💎$sp/🔐$sp}"
+#   pwd="${pwd/💎$sp\/globalization/💎$sp/🇬🇧$sp}"
+#   pwd="${pwd/💎$sp\/sites/💎$sp/🎑$sp}"
+#   pwd="${pwd/~\/src\/unisporkal/🍴$sp}"
+#   pwd="${pwd/~\/src\/Newsmaker/📰$sp}"
+#   pwd="${pwd/~\/src\/MediaVast/🎵$sp}"
+#   echo "${pwd%/}/"
+# }
+
+
 # unipsorkal startup (run from a tmux session)
 function uv { 
   tmux rename-session -s unisporkal
@@ -11,9 +52,14 @@ function uv {
   tmux send-keys 'u;cd sign_in;rails s -p 2000' 'C-m'
 }
 
-# Show ten most used commands in history:
+# Show most used commands in history:
 function common_commands {
-  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -n 10
+}
+
+function common_git_commands {
+  # history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| awk '{a[$0]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head 
+  history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| ruby -e '$a = Hash.new(0); while gets; $a[$_] += 1 ;end; $a.each{|k,v| puts v.to_s + " " + k}' | sort -rn | head -n 10
 }
 
 # Creating a remote tracking branch
@@ -35,6 +81,7 @@ function take () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 function gc {
   git commit -m "$*"
 }
+
 
 
 function rmf(){

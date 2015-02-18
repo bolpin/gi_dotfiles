@@ -7,7 +7,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'wincent/command-t'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -27,7 +26,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Bundle 'chilicuil/vim-sml-coursera'
+Plugin 'junegunn/vim-emoji' 
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -70,7 +70,6 @@ map <Leader>cu :Tabularize /\|<CR>
 map <Leader>co ggVG"*y
 map <Leader>ct :w<CR>:call RunCurrentTest()<CR>
 map <Leader>ctf :CommandTFlush<CR>:CommandT<CR>
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<CR>
 map <leader>d :NERDTreeToggle %<CR>
 map <Leader>dr :e ~/Dropbox<CR>
 map <Leader>ec :e ~/code/
@@ -86,18 +85,18 @@ map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>l <C-w>l
 map <Leader>m :Rmodel 
+map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>ng :sp ~/Dropbox/notes/git.txt<CR>
 map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
 map <Leader>np :sp ~/Dropbox/notes/project-notes.txt<CR>
 map <Leader>ns :sp ~/Dropbox/notes/splunk_notes.txt<CR>
-map <Leader>nt :e ~/Dropbox/notes/todo.txt<CR>
-map <Leader>nu :e ~/Dropbox/notes/troubleshooting-notes.txt<CR>
+map <Leader>nt :sp ~/Dropbox/notes/todo.txt<CR>
+map <Leader>nu :sp ~/Dropbox/notes/troubleshooting-notes.txt<CR>
 map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<CR> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<CR>
-nmap <Leader>pi :source ~/.vimrc<CR>:PluginInstall<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>

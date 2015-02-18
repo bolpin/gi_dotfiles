@@ -7,3 +7,6 @@ log/
 db/*.sqlite3
 .netrwhist
 project-notes.txt
+spec/javascripts/compiled/*
+spec/javascripts/fixtures/
+spec/javascripts/fixtures/*

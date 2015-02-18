@@ -51,7 +51,9 @@
     ui = true
 
 [merge]
-    tool = p4merge
+  tool = vimdiff
+  conflictstyle = diff3
+  ; tool = p4merge
 
 [mergetool]
     prompt = false
@@ -66,10 +68,11 @@
 	trustExitCode = true
 
 [diff]
-    tool = p4merge
+  tool = vimdiff
+  ;tool = p4merge
 
 [difftool]
-    prompt = false
+  prompt = false
 
 [difftool "p4merge"]
     path = /Applications/p4merge.app/Contents/Resources/launchp4merge
