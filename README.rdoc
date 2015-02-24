@@ -1,8 +1,6 @@
-=== My dot files (Thanks to Ben Orenstein and Peepcode)
+=== My dot files 
 
-These are config files to set up a system the way I like it.
-
-Vim-users will likely find useful stuff in .vimrc, and also vim/snippets.
+Vim-users might find useful stuff in .vimrc and vim/snippets.
 
 == Installation
 
@@ -13,4 +11,4 @@ Vim-users will likely find useful stuff in .vimrc, and also vim/snippets.
   Vim plugins are managed through vundle. You'll need to install vundle to get them.
 
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  Run :BundleInstall in vim.
+  Then open Vim and run :BundleInstall.
