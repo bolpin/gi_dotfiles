@@ -1,3 +1,7 @@
+which ()
+{
+    /usr/bin/which $1 || typeset -f $1 || alias $1 2> /dev/null
+}
 # s() {
 #   if [[ $PWD =~ /sign_in ]]; then
 #     port=2000
@@ -58,8 +62,8 @@ function common_commands {
 }
 
 function common_git_commands {
-  # history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| awk '{a[$0]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head 
-  history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| ruby -e '$a = Hash.new(0); while gets; $a[$_] += 1 ;end; $a.each{|k,v| puts v.to_s + " " + k}' | sort -rn | head -n 10
+  history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| awk '{a[$0]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -n 10
+  # history | grep git | ruby -ane 'puts $F.drop(1).join(" ")'| ruby -e '$a = Hash.new(0); while gets; $a[$_] += 1 ;end; $a.each{|k,v| puts v.to_s + " " + k}' | sort -rn | head -n 10
 }
 
 # Creating a remote tracking branch
@@ -209,7 +213,7 @@ function track {
 
 function g {
   if [[ $# > 0 ]]; then
-    git $@
+    git "$@"
   else
     git status
   fi
