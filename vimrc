@@ -24,8 +24,11 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+" Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'honza/vim-snippets'
 Plugin 'junegunn/vim-emoji' 
 Plugin 'scrooloose/nerdtree'
 
@@ -59,7 +62,6 @@ nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
 vmap <Leader>b :b#<CR>
 map <Leader>bb :!bundle install<CR>
-map <Leader>bn :sp ~/Dropbox/notes/bash-notes.txt<CR>
 vmap <Leader>bed "td?describe<CR>obed<tab><esc>"tpkdd/end<CR>o<esc>:nohl<CR>
 " cleanup (formatting of) code:
 nmap <leader>c ggVG= 
@@ -85,6 +87,7 @@ map <leader>j <C-w>j
 map <leader>k <C-w>k
 map <leader>l <C-w>l
 map <Leader>m :Rmodel 
+map <Leader>nb :sp ~/Dropbox/notes/bash-notes.txt<CR>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>ng :sp ~/Dropbox/notes/git.txt<CR>
 map <Leader>ni :sp ~/Dropbox/notes/ilox.txt<CR>
@@ -109,9 +112,9 @@ map <Leader>sg :sp<CR>:grep
 map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 map <Leader>sm :RSmodel 
 map <Leader>sp yss<p>
-map <Leader>sn :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
-map <Leader>sng :vs ~/.vim/bundle/vim-snippets/snippets/coffee/angular_coffee.snippets<CR>
-map <Leader>sns :vs ~/.vim/bundle/vim-snippets/snippets/sml.snippets<CR>
+" map <Leader>sn :vs ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
+" map <Leader>sng :vs ~/.vim/bundle/vim-snippets/snippets/coffee/angular_coffee.snippets<CR>
+" map <Leader>sns :vs ~/.vim/bundle/vim-snippets/snippets/sml.snippets<CR>
 map <Leader>so :so %<CR>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<CR>
 map <Leader>ss ds)i <esc>:w<CR>
