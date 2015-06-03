@@ -51,9 +51,9 @@
     ui = true
 
 [merge]
-  tool = vimdiff
+  ; tool = vimdiff
   conflictstyle = diff3
-  ; tool = p4merge
+  tool = p4merge
 
 [mergetool]
     prompt = false
@@ -68,8 +68,8 @@
 	trustExitCode = true
 
 [diff]
-  tool = vimdiff
-  ;tool = p4merge
+  ; tool = vimdiff
+  tool = p4merge
 
 [difftool]
   prompt = false
