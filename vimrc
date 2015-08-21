@@ -5,8 +5,11 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
+
 Plugin 'gmarik/Vundle.vim'
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t' using CtrlP
+Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -24,11 +27,12 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'rizzatti/dash.vim'
 " Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
+" Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 Plugin 'junegunn/vim-emoji' 
 Plugin 'scrooloose/nerdtree'
 
@@ -100,6 +104,7 @@ map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 map <Leader>o :call RunCurrentLineInTest()<CR>
 nnoremap <Leader>p :diffput<CR> 
 map <Leader>pa :set paste<CR>o<esc>"*]p:set nopaste<CR>
+map <Leader>pi :PluginInstall<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
@@ -121,7 +126,8 @@ map <Leader>ss ds)i <esc>:w<CR>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
-map <Leader>t :CommandT<CR>
+" map <Leader>t :CommandT<CR>
+map <Leader>t :CtrlP<CR>
 " map <Leader>t :w<CR>:!rake cucumber:controller_wip<CR>
 map <Leader>tr !touch tmp/restart.txt
 nnoremap <Leader>u :diffupdate<CR>
@@ -434,9 +440,10 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-" ========================================================================
-" More stuff set by me
-" ========================================================================
+let g:dash_map = {
+    \ 'coffee' : 'ng'
+    \ }
+
 
 highlight Search guibg=DarkRed ctermbg=DarkRed
 
