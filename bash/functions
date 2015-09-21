@@ -1,7 +1,3 @@
-which ()
-{
-    /usr/bin/which $1 || typeset -f $1 || alias $1 2> /dev/null
-}
 # s() {
 #   if [[ $PWD =~ /sign_in ]]; then
 #     port=2000
