@@ -7,16 +7,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
 " Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/ack.vim'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'rizzatti/dash.vim'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/ack.vim'
 
 " Snippets
 " Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -25,7 +25,7 @@ Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 
-" is this needed?
+" Needed for matching def, end, etc. in ruby 
 runtime macros/matchit.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -37,9 +37,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
@@ -196,6 +196,7 @@ map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
 nnoremap <leader>Q :cc<cr>
+map <Leader>r :!rlwrap sml<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 map <Leader>rw :%s/\s\+$//<CR>:w<CR>
 map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
