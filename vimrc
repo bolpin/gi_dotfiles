@@ -2,26 +2,26 @@
 
 autocmd!
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'vim-ruby/vim-ruby'
-Plugin 'godlygeek/tabular'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'rizzatti/dash.vim'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/ack.vim'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'godlygeek/tabular'
+Plugin 'rizzatti/dash.vim'
 
-" Snippets
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'chilicuil/vim-sml-coursera' 
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 
@@ -43,15 +43,17 @@ set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
-set incsearch
+" set incsearch
+set noincsearch
 set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 " highlight current line
-set cursorline
+" set cursorline
 set cmdheight=1
-set switchbuf=useopen
 set showtabline=2
+set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+set switchbuf=useopen
 set winwidth=79
 " This makes RVM work inside Vim. I have no idea why.
 set shell=bash
@@ -82,7 +84,7 @@ set wildmode=longest,list
 set wildmenu
 let mapleader=","
 " Fix slow O inserts
-:set timeout timeoutlen=1000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
 " variable prevents the iskeyword change so it can't hurt anyone.
@@ -140,25 +142,24 @@ augroup vimrcEx
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HIGHLIGHT TRAILING WHITESPACE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set t_Co=256 " 256 colors
-:set background=dark
-:color grb256
+set t_Co=256 " 256 colors
+set background=dark
+color vividchalk
+"color brianscolor
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! MapCR()
-  nnoremap <cr> :call RunTestFile()<cr>
-endfunction
-call MapCR()
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -183,6 +184,7 @@ nnoremap <leader>f :call SelectaFile(".")<cr>
 nnoremap <Leader>g :diffget<CR>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 noremap <leader>h <C-w>h
+map <Leader>ir :!irb<CR>
 noremap <leader>j <C-w>j
 " nnoremap <leader>j :cnext<cr>
 noremap <leader>k <C-w>k
@@ -198,6 +200,8 @@ map <Leader>ppj :.!python -m json.tool<CR>
 nnoremap <leader>Q :cc<cr>
 map <Leader>r :!rlwrap sml<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+map <Leader>rs :!rails s<CR>
+map <leader>rt :call RunTestFile()<cr>
 map <Leader>rw :%s/\s\+$//<CR>:w<CR>
 map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 map <Leader>sp yss<p>
@@ -207,7 +211,6 @@ map <Leader>tr !touch tmp/restart.txt
 nnoremap <Leader>u :diffupdate<CR>
 map <Leader>vi :tabe ~/.vimrc<CR>
 nnoremap <leader>w :w\|:!script/features --profile wip<cr>
-
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
@@ -271,8 +274,8 @@ function! PromoteToLet()
   :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
   :normal ==
 endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
+command! PromoteToLet :call PromoteToLet()
+map <leader>p :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT VARIABLE (SKETCHY)
@@ -536,6 +539,7 @@ nnoremap <leader>q :call ToggleQuickfix()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RemoveFancyCharacters()
     let typo = {}
+    let typo["•"] = '*'
     let typo["“"] = '"'
     let typo["”"] = '"'
     let typo["‘"] = "'"
