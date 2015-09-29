@@ -142,15 +142,22 @@ augroup vimrcEx
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" HIGHLIGHT TRAILING WHITESPACE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256 " 256 colors
 set background=dark
 color vividchalk
 "color brianscolor
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HIGHLIGHT TRAILING WHITESPACE (leave this section after ':color vividchalk')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight ExtraSpace    ctermbg=red guibg=red
+match ExtraSpace /\s\+$/
+autocmd BufWinEnter * match ExtraSpace /\s\+$/
+autocmd InsertEnter * match ExtraSpace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraSpace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
