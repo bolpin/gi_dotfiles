@@ -1,42 +1,3 @@
-# s() {
-#   if [[ $PWD =~ /sign_in ]]; then
-#     port=2000
-#   elif [[ $PWD =~ /purchase ]]; then
-#     port=3000
-#   elif [[ $PWD =~ /asset_detail ]]; then
-#     port=4000
-#   elif [[ $PWD =~ /search ]]; then
-#     port=5000
-#   elif [[ $PWD =~ /collaboration ]]; then
-#     port=7000
-#   fi
-#
-#   app=$(shortpwd)
-#   echo -e "\033]0;💡  ${app%/}  💡\007\r"
-#   svcwatch=1 rails s -p $port
-# }
-#
-# shortpwd()
-# {
-#   sp=$1
-#   pwd="${PWD/$HOME/~}"
-#   pwd="${pwd/~\/src\/unisporkal\/sign_in/📝$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/purchase/💰$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/asset_detail/📷$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/search/🔎$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/collaboration/💗$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/landing/🏡$sp}"
-#   pwd="${pwd/~\/src\/unisporkal\/gems/💎$sp}"
-#   pwd="${pwd/💎$sp\/unisporkal_engine/💎$sp/🚒$sp}"
-#   pwd="${pwd/💎$sp\/unisporkal_styles/💎$sp/🎨$sp}"
-#   pwd="${pwd/💎$sp\/authentication/💎$sp/🔐$sp}"
-#   pwd="${pwd/💎$sp\/globalization/💎$sp/🇬🇧$sp}"
-#   pwd="${pwd/💎$sp\/sites/💎$sp/🎑$sp}"
-#   pwd="${pwd/~\/src\/unisporkal/🍴$sp}"
-#   pwd="${pwd/~\/src\/Newsmaker/📰$sp}"
-#   pwd="${pwd/~\/src\/MediaVast/🎵$sp}"
-#   echo "${pwd%/}/"
-# }
 
 
 # unipsorkal startup (run from a tmux session)
@@ -215,4 +176,265 @@ function g {
   fi
 }
 # compdef g=git
+
+
+
+
+
+
+
+
+
+
+
+
+
+# j () {
+#   if [[ ${@} = -* ]]
+#   then
+#     autojump ${@}
+#     return
+#   fi
+#   local new_path="$(autojump ${@})"
+#   if [ -d "${new_path}" ]
+#   then
+#     echo -e "\\033[31m${new_path}\\033[0m"
+#     cd "${new_path}"
+#   else
+#     echo "autojump: directory '${@}' not found"
+#     echo "Try \`autojump --help\` for more information."
+#     false
+#   fi
+# }
+#
+# alias gitprune='git remote prune origin'
+# alias gitclean=_gitclean
+#   _gitclean() {
+#     while read line
+#     do
+#         echo $line
+#     done <<< "`(git clean -xdf)`"
+#   }
+# alias email_recent=_email_recent
+#   _email_recent() {
+#     git log --pretty=format:"%ae" --since=$1.months | sort -k1 -u | sed ':a;N;$!ba;s/\n/; /g'
+#   }
+# alias current_branch='git rev-parse --abbrev-ref HEAD'
+# alias anthill_current_branch=_anthill_current_branch
+#   _anthill_current_branch() {
+#      local branch=$(current_branch)
+#      local workflowMatch=`ht workflow list $(current_project) --json | jq -r '.[].name' | grep "$branch"`
+#      if [ -z "$workflowMatch" ]
+#      then
+#        branch="FeatureIntegration"
+#      fi
+#    echo "$branch"
+#   }
+#
+# alias ffn=_ffn
+#   _ffn() {
+#     find . -name $1 -exec grep --with-filename $2 {} \;
+#   }
+# alias ffno=_ffno
+#   _ffno() {
+#     find . -name $1 -exec grep --files-with-matches $2 {} \;
+#   }
+# alias rm_orig='find . -name "*.orig" -exec rm -rf {} \;'
+# alias proj-ref=_proj-ref
+#    _proj-ref() {
+#       local results=`find . -name *.csproj -exec grep --with-filename $1 {} \; | grep HintPath`
+#     for r in $results; do
+#         echo $r | sed 's/<HintPath>/   /' | sed 's/<\/HintPath>//'
+#     done
+#    }
+#
+# alias check_free=_check_free
+#   _check_free() {
+#     wmic //node:"$1" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace| grep -i "c:"
+#   }
+#
+# alias splunk_check=_splunk_check
+# _splunk_check() {
+#    sc \\\\$1 query SplunkForwarder
+# }
+#
+# alias splunk_restart=_splunk_restart
+# _splunk_restart() {
+#    sc \\\\$1 start SplunkForwarder
+# }
+#
+# alias iplookup=_iplookup
+# _iplookup() {
+#    ping -n 1 -a $1 | grep Pinging | sed 's/Pinging //g' | awk -F " " '{print $2}'
+# }
+#
+# alias iplookups=_iplookups
+# _iplookups() {
+#    for r in $@
+#    do
+#       local ip=`iplookup $r`
+#     echo "$r $ip"
+#    done
+# }
+#
+alias ht='/Users/cpeterson/src/git/github/hilltop/build/install/hilltop/bin/hilltop'
+alias ahp='ht project open .&'
+alias current_project='basename `git rev-parse --show-toplevel`'
+
+alias new_build='ht build new --wait $(current_project) $(anthill_current_branch)'
+alias latest_build='ht build latest $(current_project) $(anthill_current_branch) --json | jq ".id"'
+alias latest_success='ht build latest $(current_project) $(anthill_current_branch) success --json | jq ".id"'
+
+alias bl=_bl
+_bl() {
+   ht build open $1
+}
+#
+# alias fb-new=_fb_new
+#   _fb_new() {
+#      git pull
+#      git checkout -b $1
+#      git push -u origin $1
+#   }
+#   
+# alias fb-up=_fb_up
+#   _fb_up() {
+#     git pull
+#     git merge origin/master
+#     git mergetool
+#     git commit
+#   }
+#
+#
+# alias fi?=_fi?
+#   _fi?() {
+#     local current=`ht workflow-property list $(current_project) FeatureIntegration --json | jq -r '. | select(.name=="FeaturesBranchesForIntegration") | .value'`
+#     echo $current
+#   }
+#
+# alias fi+=_fi+
+#   _fi+() {
+#     local branch=$1
+#     if [ -z $branch ]
+#     then
+#       branch=$(current_branch)
+#     fi
+#     local current=`fi?`
+#     if [[ $current == *$branch* ]]
+#     then
+#       echo 'Already enlisted'
+#       return 0
+#     fi
+#     local newValue="$current $branch"
+#     
+#     ht workflow-property set $(current_project) FeatureIntegration FeaturesBranchesForIntegration "$newValue"
+#     echo "$newValue"
+#   }
+#
+# alias fi-=_fi-
+#   _fi-() {
+#     local branch=$1
+#     if [ -z $branch ]
+#     then
+#       branch=$(current_branch)
+#     fi
+#     local current=`fi?`
+#     if [[ $current == *$branch* ]]
+#     then
+#       local newValue=`echo $current | sed s/$branch//`
+#     
+#       ht workflow-property set $(current_project) FeatureIntegration FeaturesBranchesForIntegration "$newValue"
+#       echo "$newValue"
+#     else
+#       echo 'Not enlisted'
+#       return 1
+#     fi
+#   }
+#
+# alias tag-release=_tag-release
+#   _tag-release() {
+#    ht build show $1 > buildinfo.txt
+#    
+#    deployed=`cat buildinfo.txt | grep -i 'Deployed to Production'`
+#    if [ "$deployed" ]; then
+#       stamp=`cat buildinfo.txt | grep -i 'Stamp' | awk -F " " '{print $2}'`
+#     echo "Stamp: $stamp"
+#     hash=`cat buildinfo.txt | grep -i 'workspace.revision' | awk -F " " '{print $NF}'`
+#       echo "Hash: $hash"
+#     git tag -a "$stamp" --file buildinfo.txt $hash
+#     rm buildinfo.txt
+#     git push --tags
+#    else
+#       echo "Not deployed to production!"
+#    fi
+#   }
+#
+alias deploy=_deploy
+  _deploy() {
+    if [ -z "$1" ]
+    then
+      echo "Must specify a build life"
+      return 1
+    fi
+    local projectName=`ht build show $1 --json | jq -r '.project'`
+    local workflowName='Deploy: Lower Environment'
+    local environment=`echo $2 | tr '[:upper:]' '[:lower:]'`
+    case $environment in
+      candidate)
+        environment='Candidate Integration'
+        ;;
+      test01)
+        environment='TEST01'
+        ;;
+      test03)
+        environment='TEST03'
+        ;;
+      stage)
+        workflowName='Deploy: Staging'
+        environment=`ht workflow show $projectName "Deploy: Staging" --json | jq -r '.environments | .[]'`
+        ;;
+      production)
+        if [ -z "$3" ]
+        then
+           echo 'Must specify new features / rollback implications of this build'
+           return 3
+        fi
+        local rollbackBuild=`ht build latest $projectName master 'Deployed to PRODUCTION' --json | jq '.id'`
+        local serviceNowMessage="Run 'Deploy: Production' on Build $rollbackBuild\n\nChanges: $3"
+        ht build run --wait $1 '1. Initiate RFC to PRODUCTION' OperationalTasksEnv SvcNow_message="$serviceNowMessage"
+        open "http://splunk.gettywan.com/en-US/app/gi_appdev_entsvc_web/Release2?form.service=$projectName"
+        tag-release $1
+        return 0
+        ;;
+      *)
+        echo "Must specify a valid environment, but was '$environment'"
+        return 2
+    esac
+    ht build run --wait $1 "$workflowName" "$environment"
+  }
+
+alias hilltop_test=_test
+  _test() {
+    if [ -z "$1" ]
+    then
+      echo "Must specify a build life"
+      return 1
+    fi
+    local environment=`echo $2 | tr '[:upper:]' '[:lower:]'`
+    case $environment in
+      candidate)
+        environment='candidate'
+        ;;
+      test01)
+        environment='test01_group'
+        ;;
+      test03)
+        environment='test03_group'
+        ;;
+      *)
+        echo "Must specify a valid environment, but was '$environment'"
+        return 2
+    esac
+    ht build run --wait $1 'Execute Integration Tests' 'ENTSVC Test Runners' "Environment=$environment"
+  }
 

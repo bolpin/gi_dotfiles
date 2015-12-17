@@ -5,7 +5,7 @@
 ; 	email = bolpin@gmail.com 
 
 [http]
-  sslVerify = false
+	sslVerify = false
 
 [core]
   editor = vim --noplugin
@@ -20,7 +20,7 @@
   autosetuprebase = always
 
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 
 [alias]
   co = checkout
