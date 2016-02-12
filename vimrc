@@ -31,6 +31,8 @@ runtime macros/matchit.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set clipboard=unnamed
+
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
@@ -214,6 +216,9 @@ map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 map <Leader>sp yss<p>
 map <Leader>sq j<c-v>}klllyss"<esc>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
+" map <Leader>t :w\|:rm -f *.html && ruby build.rb && ls *.html && cat *.html && <cr>
+"map <Leader>t :w\|:silent !echo "rspec --color %" > test-output-pipe<cr>
+"map <Leader>t :w\|:silent !echo "rake t" > test-output-pipe<cr>
 map <Leader>tr !touch tmp/restart.txt
 nnoremap <Leader>u :diffupdate<CR>
 map <Leader>vi :tabe ~/.vimrc<CR>

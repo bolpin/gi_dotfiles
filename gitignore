@@ -10,3 +10,4 @@ project-notes.txt
 spec/javascripts/compiled/*
 spec/javascripts/fixtures/
 spec/javascripts/fixtures/*
+public/landing/*.*
