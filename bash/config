@@ -54,8 +54,6 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-set -o vi
-
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
@@ -70,3 +68,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/opt/libxml2/lib/pkgco
 export DOCKER_CERT_PATH=/Users/bolpin/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.104:2376
+
+set -o vi
+
