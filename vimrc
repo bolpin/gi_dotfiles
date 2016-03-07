@@ -206,6 +206,7 @@ map <Leader>nt :sp ~/Dropbox/notes/todo.txt<CR>
 map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
+map <Leader>pr Orequire 'pry';binding.pry<ESC>
 nnoremap <leader>Q :cc<cr>
 map <Leader>r :!rlwrap sml<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
