@@ -199,6 +199,7 @@ noremap <leader>j <C-w>j
 noremap <leader>k <C-w>k
 " nnoremap <leader>k :cprev<cr>
 noremap <leader>l <C-w>l
+map <Leader>m Orequire 'pry';binding.pry<ESC>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
 map <Leader>np :sp ~/Dropbox/notes/project-notes.txt<CR>
@@ -206,7 +207,6 @@ map <Leader>nt :sp ~/Dropbox/notes/todo.txt<CR>
 map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
-map <Leader>pr Orequire 'pry';binding.pry<ESC>
 nnoremap <leader>Q :cc<cr>
 map <Leader>r :!rlwrap sml<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
