@@ -5,7 +5,7 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README LICENSE id_dsa.pub].include? file
-    
+
     if File.exist?(File.join(ENV['HOME'], ".#{file}"))
       if replace_all
         replace_file(file)
@@ -32,10 +32,6 @@ task :install do
   puts "Linking public ssh key"
   system %Q{rm "$HOME/.ssh/id_rsa.pub"}
   system %Q{ln -s "$PWD/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"}
-
-  # Need to do this to make vim use RVM's ruby version
-  puts "Moving zshenv to zshrc"
-  system %Q{sudo mv /etc/zshenv /etc/zshrc}
 
   system %Q{mkdir ~/.tmp}
 end
