@@ -7,6 +7,7 @@
 --ignore-dir=node_modules/
 
 --ignore-file=is:tags
+--ignore-file=is:foo
 
 # follow symlinks
 --follow
@@ -14,7 +15,7 @@
 # Use "less −r" as my pager
 # --pager
 # less -r
- 
+
 #make sure ack knows how to search common filetypes used in rails projects
 --type-add=css=.scss
 --type-add=ruby=.haml

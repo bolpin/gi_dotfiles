@@ -65,9 +65,5 @@ PATH="/usr/local/bin:$PATH"
 # for ruby-vips:
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/opt/libxml2/lib/pkgconfig
 
-export DOCKER_CERT_PATH=/Users/bolpin/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.104:2376
-
 set -o vi
 

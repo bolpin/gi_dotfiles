@@ -12,7 +12,6 @@ fi
 
 alias life='cd ~/src/life'
 
-
 alias fastuni='~/src/unisporkal/tools/uni/bin/uni'
 
 alias ac='cd ~/src/unisporkal/account'
@@ -51,9 +50,10 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdm='git diff master'
+alias get='sudo apt-get install'
 alias gg='git l'
 alias ghelp='cat ~/Dropbox/notes/git.txt'
-alias get='sudo apt-get install'
+alias glr='git log `git describe --tags --abbrev=0`..HEAD --oneline --pretty="\`%s\`  %an, %ar"'
 alias goc='cd ~/rails/cams'
 alias gog='cd ~/src/unisporkal/gems'
 alias gop='cd ~/Dropbox/pl_practice'
@@ -120,9 +120,7 @@ alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped
 alias t='vi ~/src/unisporkal/gems/unisporkal_engine/app/assets/javascripts/unisporkal_engine/tracking/tag_manager.site_catalyst.js.coffee'
 alias track='git checkout -t'
 alias u='cd ~/src/unisporkal'
-alias uh="echo 'Updating your hostfile';cd ~/src/unisporkal/gi_proxy;docker-machine ip default | sudo sh -c 'ruby generate_hosts.rb >> /etc/hosts'"
 alias us='cd ~/src/unisporkal/gems/unisporkal_styles'
-#alias vi='mvim --remote-silent'
 alias visa='head -n 20 ~/Dropbox/notes/project-notes.txt'
 alias vu='cd ~/code/vim-university'
 alias z='zeus'

@@ -19,8 +19,7 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'rizzatti/dash.vim'
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'chilicuil/vim-sml-coursera' 
+" Plugin 'chilicuil/vim-sml-coursera' 
 Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
@@ -38,10 +37,8 @@ set nocompatible
 set hidden
 " remember more commands and search history
 set history=10000
+set tabstop=2 softtabstop=2 shiftwidth=2
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
@@ -102,6 +99,8 @@ set nofoldenable
 set nojoinspaces
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
+set list
+set listchars=tab:>-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -117,10 +116,11 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai ts=2 sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
+  autocmd! BufRead,BufNewFile *.scss setfiletype sass
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
