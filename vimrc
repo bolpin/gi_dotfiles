@@ -18,13 +18,15 @@ Plugin 'vim-scripts/ack.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'rizzatti/dash.vim'
+Plugin 'floobits/floobits-neovim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
-" Plugin 'chilicuil/vim-sml-coursera' 
+" Plugin 'chilicuil/vim-sml-coursera'
 Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 
-" Needed for matching def, end, etc. in ruby 
+" Needed for matching def, end, etc. in ruby
 runtime macros/matchit.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -189,7 +191,8 @@ nnoremap <leader>c :w\|:!script/features<cr>
 map <Leader>cd :cd %:p:h<CR>
 "map <Leader>fix :cnoremap % %<CR>
 nnoremap <leader>D :tabclose<cr>
-nnoremap <leader>f :call SelectaFile(".")<cr>
+" nnoremap <leader>f :call SelectaFile(".")<cr>
+nnoremap <leader>f :CtrlP<cr>
 nnoremap <Leader>g :diffget<CR>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 noremap <leader>h <C-w>h
@@ -569,29 +572,29 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
+" function! SelectaCommand(choice_command, selecta_args, vim_command)
+"   try
+"     let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+"   catch /Vim:Interrupt/
+"     " Swallow the ^C so that the redraw below happens; otherwise there will be
+"     " leftovers from selecta on the screen
+"     redraw!
+"     return
+"   endtry
+"   redraw!
+"   exec a:vim_command . " " . selection
+" endfunction
 
-function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
-endfunction
+" function! SelectaFile(path)
+"   call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
+" endfunction
 
 "Fuzzy select
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+" function! SelectaIdentifier()
+"   " Yank the word under the cursor into the z register
+"   normal "zyiw
+"   " Fuzzy match files in the current directory, starting with the word under
+"   " the cursor
+"   call SelectaCommand("find * -type f", "-s " . @z, ":e")
+" endfunction
+" nnoremap <c-g> :call SelectaIdentifier()<cr>

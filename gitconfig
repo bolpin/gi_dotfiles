@@ -1,8 +1,8 @@
 [user]
   name = bolpin
   email = bolpin@gettyimages.com
-; 	name = Brian Olpin
-; 	email = bolpin@gmail.com 
+; name = Brian Olpin
+; email = bolpin@gmail.com
 
 [http]
 	sslVerify = false
@@ -10,7 +10,7 @@
 [core]
   editor = vim --noplugin
   autocrlf = false
-	excludesfile = /Users/bolpin/.gitignore_global
+	excludesfile = /Users/bolpin/.gitignore
 
 [push]
   # Only push branches that have been set up to track a remote branch(?)
