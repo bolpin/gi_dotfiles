@@ -104,6 +104,8 @@ set autoread
 set list
 set listchars=tab:>-
 
+let g:ctrlp_max_files=30000
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|.git\|tmp'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,6 +194,9 @@ map <Leader>cd :cd %:p:h<CR>
 "map <Leader>fix :cnoremap % %<CR>
 nnoremap <leader>D :tabclose<cr>
 nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>ft :FlooToggleFollowMode<cr>
+nnoremap <leader>fs :FlooSummon<cr>
+nnoremap <leader>fj :FlooJoinWorkspace https://floobits.com/bolpin/account<cr>
 nnoremap <Leader>g :diffget<CR>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 noremap <leader>h <C-w>h
@@ -227,7 +232,6 @@ nnoremap <leader>w :w\|:!script/features --profile wip<cr>
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
-
 
 
 " Close all other windows, open a vertical split, and open this file's test

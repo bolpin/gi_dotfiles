@@ -33,6 +33,11 @@ task :install do
   system %Q{rm "$HOME/.ssh/id_rsa.pub"}
   system %Q{ln -s "$PWD/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"}
 
+  # TODO: Setup neovim
+    # mkdir ~/.config
+    # ln -s ~/.vim ~/.config/nvim
+    # ln -s ~/.vimrc ~/.config/nvim/init.vim
+
   system %Q{mkdir ~/.tmp}
 end
 
