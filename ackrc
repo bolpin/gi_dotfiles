@@ -4,7 +4,8 @@
 --ignore-dir=doc
 --ignore-dir=coverage
 --ignore-dir=.idea/
---ignore-dir=node_modules/
+--ignore-dir=node_modules
+--ignore-dir=bower_components
 
 --ignore-file=is:tags
 --ignore-file=is:foo
