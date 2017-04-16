@@ -105,7 +105,7 @@ set list
 set listchars=tab:>-
 
 let g:ctrlp_max_files=30000
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|.git\|tmp'
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git\|.git\|tmp'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
