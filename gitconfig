@@ -5,12 +5,12 @@
 ; email = bolpin@gmail.com
 
 [http]
-	sslVerify = false
+  sslVerify = false
 
 [core]
   editor = vim --noplugin
   autocrlf = false
-	excludesfile = /Users/bolpin/.gitignore
+  excludesfile = /Users/bolpin/.gitignore
 
 [push]
   # Only push branches that have been set up to track a remote branch(?)
@@ -20,7 +20,7 @@
   autosetuprebase = always
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 [alias]
   co = checkout
@@ -36,6 +36,7 @@
   ci = commit
   st = status
   br = branch
+  gl-fix = !sh -c 'git update-index --no-skip-worktree Gemfile.lock && git checkout -- Gemfile.lock && git update-index --skip-worktree Gemfile.lock'
 
 [help]
   autocorrect = 1
@@ -60,11 +61,11 @@
     keepBackup = false
 
 [mergetool "p4merge"]
-    path = /Applications/p4merge.app/Contents/Resources/launchp4merge 
+    path = /Applications/p4merge.app/Contents/Resources/launchp4merge
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 
 [mergetool "sourcetree"]
-	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/A048329E-80AB-45D8-B835-C08B4CF54161/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/B1862ACF-EF1D-48A0-AB1A-540B1B341656/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [diff]

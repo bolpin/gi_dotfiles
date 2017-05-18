@@ -15,13 +15,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/ack.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'rizzatti/dash.vim'
 Plugin 'floobits/floobits-neovim'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'elmcast/elm-vim'
 
-" Plugin 'chilicuil/vim-sml-coursera'
 Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
@@ -104,8 +105,10 @@ set autoread
 set list
 set listchars=tab:>-
 
+let g:elm_format_autosave=1
+
 let g:ctrlp_max_files=30000
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git\|.git\|tmp'
+let g:ctrlp_custom_ignore = 'elm-stuff\|node_modules\|bower_components\|DS_Store\|git\|.git\|tmp'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,6 +123,7 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
+  autocmd FileType elm set ai sw=4 sts=4 et
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai ts=2 sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 
@@ -174,12 +178,7 @@ set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
+" nnoremap <leader>. :call OpenTestAlternate()<cr>
 nnoremap <leader><leader> <c-^>
 map <Leader>= <C-w>=
 map <C-n> :cn<CR>
@@ -189,15 +188,22 @@ vnoremap > >gv
 
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
-nnoremap <leader>c :w\|:!script/features<cr>
 map <Leader>cd :cd %:p:h<CR>
 "map <Leader>fix :cnoremap % %<CR>
 nnoremap <leader>D :tabclose<cr>
+" close current buffer; leave the split open (if another buffer is available
+" to fill the split):
+nmap <leader>d :b#<bar>bd#<CR>
+nnoremap <leader>el :ElmEvalLine<CR>
+vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+nnoremap <leader>em :ElmMake<CR>
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>ft :FlooToggleFollowMode<cr>
 nnoremap <leader>fs :FlooSummon<cr>
 nnoremap <leader>fj :FlooJoinWorkspace https://floobits.com/bolpin/account<cr>
 nnoremap <Leader>g :diffget<CR>
+" map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gR :call ShowRoutes()<cr>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<CR>
 noremap <leader>h <C-w>h
 map <Leader>ir :!irb<CR>
@@ -205,6 +211,7 @@ noremap <leader>j <C-w>j
 noremap <leader>k <C-w>k
 noremap <leader>l <C-w>l
 map <Leader>m Orequire 'pry';binding.pry<ESC>
+map <leader>n :call RenameFile()<cr>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
 map <Leader>np :sp ~/Dropbox/notes/project-notes.txt<CR>
@@ -212,23 +219,24 @@ map <Leader>nt :sp ~/Dropbox/notes/todo.txt<CR>
 map <Leader>nv :sp ~/Dropbox/notes/vimtips.txt<CR>
 nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
+nnoremap <leader>q :call ToggleQuickfix()<cr>
 nnoremap <leader>Q :cc<cr>
-map <Leader>r :!rlwrap sml<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+nnoremap <leader>ri :call InlineVariable()<cr>
 map <Leader>rs :!rails s<CR>
+vnoremap <leader>rv :call ExtractVariable()<cr>
 map <leader>rt :call RunTestFile()<cr>
 map <Leader>rw :%s/\s\+$//<CR>:w<CR>
 map <Leader>sj :call OpenJasmineSpecInBrowser()<CR>
 map <Leader>sp yss<p>
 map <Leader>sq j<c-v>}klllyss"<esc>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
-" map <Leader>t :w\|:rm -f *.html && ruby build.rb && ls *.html && cat *.html && <cr>
-"map <Leader>t :w\|:silent !echo "rspec --color %" > test-output-pipe<cr>
-"map <Leader>t :w\|:silent !echo "rake t" > test-output-pipe<cr>
 map <Leader>tr !touch tmp/restart.txt
 nnoremap <Leader>u :diffupdate<CR>
+map <leader>v :view %%
 map <Leader>vi :tabe ~/.vimrc<CR>
 nnoremap <leader>w :w\|:!script/features --profile wip<cr>
+
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
@@ -243,7 +251,6 @@ function! FocusOnFile()
   call OpenTestAlternate()
   normal! h
 endfunction
-nnoremap <leader>s :call FocusOnFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -261,13 +268,6 @@ inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OPEN FILES IN DIRECTORY OF CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cnoremap <expr> %% expand('%:h').'/'
-map <leader>e :edit %%
-map <leader>v :view %%
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()
@@ -279,7 +279,6 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>n :call RenameFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
@@ -292,7 +291,6 @@ function! PromoteToLet()
   :normal ==
 endfunction
 command! PromoteToLet :call PromoteToLet()
-map <leader>p :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT VARIABLE (SKETCHY)
@@ -313,7 +311,6 @@ function! ExtractVariable()
     " Paste the original selected text to be the variable value
     normal! $p
 endfunction
-vnoremap <leader>rv :call ExtractVariable()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INLINE VARIABLE (SKETCHY)
@@ -340,12 +337,10 @@ function! InlineVariable()
     :let @a = l:tmp_a
     :let @b = l:tmp_b
 endfunction
-nnoremap <leader>ri :call InlineVariable()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>gr :topleft :split config/routes.rb<cr>
 function! ShowRoutes()
   " Requires 'scratch' plugin
   :topleft 100 :split __Routes__
@@ -362,7 +357,6 @@ function! ShowRoutes()
   " Delete empty trailing line
   :normal dd
 endfunction
-map <leader>gR :call ShowRoutes()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
@@ -371,8 +365,6 @@ function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
 endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
-
 function! AlternateForCurrentFile()
   let current_file = expand("%")
   let new_file = current_file
@@ -420,7 +412,6 @@ function! RunNearestTest()
     let spec_line_number = line('.')
     call RunTestFile(":" . spec_line_number)
 endfunction
-nnoremap <leader>T :call RunNearestTest()<cr>
 
 function! SetTestFile(command_suffix)
     " Set the spec file that tests will be run for.
@@ -547,8 +538,6 @@ function! OpenQuickfix()
       cc
   endif
 endfunction
-
-nnoremap <leader>q :call ToggleQuickfix()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RemoveFancyCharacters COMMAND
