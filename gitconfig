@@ -37,6 +37,8 @@
   st = status
   br = branch
   gl-fix = !sh -c 'git update-index --no-skip-worktree Gemfile.lock && git checkout -- Gemfile.lock && git update-index --skip-worktree Gemfile.lock'
+  praise = blame
+  recent = shortlog -sn --since='7 days'
 
 [help]
   autocorrect = 1
@@ -65,7 +67,7 @@
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 
 [mergetool "sourcetree"]
-	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/B1862ACF-EF1D-48A0-AB1A-540B1B341656/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/781554E2-1E1B-403E-9C5F-339B7437B4E8/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [diff]

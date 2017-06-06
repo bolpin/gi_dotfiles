@@ -16,6 +16,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
@@ -104,6 +105,7 @@ set nojoinspaces
 set autoread
 set list
 set listchars=tab:>-
+set relativenumber
 
 let g:elm_format_autosave=1
 
@@ -190,10 +192,8 @@ nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
 map <Leader>cd :cd %:p:h<CR>
 "map <Leader>fix :cnoremap % %<CR>
-nnoremap <leader>D :tabclose<cr>
-" close current buffer; leave the split open (if another buffer is available
-" to fill the split):
-nmap <leader>d :b#<bar>bd#<CR>
+nnoremap <leader>d :NERDTreeToggle<cr>
+nnoremap <leader>e :ElmMake<CR>
 nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMake<CR>
