@@ -1,4 +1,6 @@
-" vim:set ts=2 sts=2 sw=2 expandtab:
+" To start without .vimrc bindings:
+"
+" vim -u NONE
 
 autocmd!
 
@@ -105,7 +107,7 @@ set nojoinspaces
 set autoread
 set list
 set listchars=tab:>-
-set relativenumber
+set number
 
 let g:elm_format_autosave=1
 
@@ -196,7 +198,6 @@ nnoremap <leader>d :NERDTreeToggle<cr>
 nnoremap <leader>e :ElmMake<CR>
 nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
-nnoremap <leader>em :ElmMake<CR>
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>ft :FlooToggleFollowMode<cr>
 nnoremap <leader>fs :FlooSummon<cr>
