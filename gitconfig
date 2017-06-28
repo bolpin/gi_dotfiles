@@ -67,7 +67,7 @@
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 
 [mergetool "sourcetree"]
-	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/781554E2-1E1B-403E-9C5F-339B7437B4E8/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/923FBA35-B1BD-4BE7-892B-2D79D2454A19/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [diff]
