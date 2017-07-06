@@ -8,6 +8,7 @@
 --ignore-dir=bower_components
 --ignore-dir=elm-stuff
 
+--ignore-file=is:elm.js
 --ignore-file=is:tags
 --ignore-file=is:foo
 
