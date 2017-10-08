@@ -1,6 +1,6 @@
 === My dot files 
 
-Vim-users might find useful stuff in .vimrc and vim/snippets.
+Vim users might find useful stuff in .vimrc and vim/snippets.
 
 == Installation
 

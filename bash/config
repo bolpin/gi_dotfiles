@@ -7,7 +7,7 @@ export EDITOR="vim"
 shopt -s cdspell
 
 # Set this so screen will show the currently-running program
-PROMPT_COMMAND='echo -ne "\033k\033\\"'
+# PROMPT_COMMAND='echo -ne "\033k\033\\"'
 
 
 # Disable flow control commands (keeps C-s from freezing everything)
