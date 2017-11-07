@@ -18,9 +18,6 @@
 [branch]
   autosetuprebase = always
 
-[credential]
-  helper = osxkeychain
-
 [alias]
   co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
