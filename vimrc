@@ -4,6 +4,8 @@
 
 autocmd!
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,7 +25,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'rizzatti/dash.vim'
-Plugin 'floobits/floobits-neovim'
 Plugin 'elmcast/elm-vim'
 
 Plugin 'kchmck/vim-coffee-script'
