@@ -19,6 +19,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
@@ -211,7 +212,8 @@ map <Leader>ir :!irb<CR>
 noremap <leader>j <C-w>j
 noremap <leader>k <C-w>k
 noremap <leader>l <C-w>l
-map <Leader>m Orequire 'pry';binding.pry<ESC>
+map <leader>m Orequire 'pry';binding.pry<ESC>
+map <leader>mm O/* tslint:disable */<CR>debugger;<CR>/* tslint:enable */<ESC>
 map <leader>n :call RenameFile()<cr>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
@@ -222,6 +224,7 @@ nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
 nnoremap <leader>q :call ToggleQuickfix()<cr>
 nnoremap <leader>Q :cc<cr>
+map <Leader>r :!ruby %<cr>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 nnoremap <leader>ri :call InlineVariable()<cr>
 map <Leader>rs :!rails s<CR>
