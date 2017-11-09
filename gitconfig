@@ -1,7 +1,6 @@
 [user]
-  name = bolpin
-  email = bolpin@gettyimages.com
-; name = Brian Olpin
+  email = bolpin@liftingsea.com
+  name = Brian Olpin
 ; email = bolpin@gmail.com
 
 [http]
@@ -18,9 +17,6 @@
 
 [branch]
   autosetuprebase = always
-
-[credential]
-  helper = osxkeychain
 
 [alias]
   co = checkout
@@ -62,27 +58,10 @@
     prompt = false
     keepBackup = false
 
-[mergetool "p4merge"]
-    path = /Applications/p4merge.app/Contents/Resources/launchp4merge
-    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-
-[mergetool "sourcetree"]
-	cmd = /private/var/folders/nh/89ls5lcs1ts15k7nd5nk18_cp116g4/T/AppTranslocation/1D4AC735-E437-47B7-9364-C6A0641217D4/d/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [diff]
-  ; tool = vimdiff
-  tool = p4merge
+  tool = vimdiff
 
 [difftool]
   prompt = false
-
-[difftool "p4merge"]
-    path = /Applications/p4merge.app/Contents/Resources/launchp4merge
-    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 
 
