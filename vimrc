@@ -214,6 +214,7 @@ noremap <leader>j <C-w>j
 noremap <leader>k <C-w>k
 noremap <leader>l <C-w>l
 map <leader>m Orequire 'pry';binding.pry<ESC>
+map <leader>mc :%w !pbcopy<cr>
 map <leader>mm O/* tslint:disable */<CR>debugger;<CR>/* tslint:enable */<ESC>
 map <leader>n :call RenameFile()<cr>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
