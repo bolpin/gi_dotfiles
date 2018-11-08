@@ -10,37 +10,49 @@ fi
 # Show ten most used commands in history:
 # history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 
-alias life='cd ~/src/life'
 
 
-alias ang='cd ~/src/sandbox/angular-coffeescript-styleguide'
+
+
+
+
+# # Heroku databases
+# Heroku production
+# Heroku staging
+# alias ctags="`brew --prefix`/bin/ctags"
+# alias el='cd ~/src/sandbox/elm-spa-example/src'
+# alias el='cd ~/src/sandbox/elm/elm-pagination'
+# alias g='DO NOT ALIAS g'
+# alias stree='open -a SourceTree'
+# changes since last release - formatted!
 alias amend="git commit --amend"
+alias ang='cd ~/src/sandbox/angular-coffeescript-styleguide'
 alias asu="cd ~/code/rails/activesupport"
 alias bake='bundle exec rake'
 alias be='bundle exec'
-alias bi='bundle install'
 alias be='bundle exec'
+alias bi='bundle install'
 alias brc='source ~/.bash_profile'
 alias bu='bundle update'
 alias bunbang='bundle install && !!'
-# changes since last release - formatted!
 alias changes='git log `git describe --tags --abbrev=0`..HEAD --oneline --pretty="\`%s\`  %an, %ar"'
 alias chrome='open -a Google\ Chrome --args --disable-web-security --allow-files-access-from-files'
 alias code='cd ~/code'
 alias ct='cd ~/Dropbox/codetalk/wednesday'
-# alias ctags="`brew --prefix`/bin/ctags"
+alias db-backup-production='heroku pgbackups:capture --remote production'
+alias db-backups='heroku pgbackups --remote production'
+alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
+alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
+alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
 alias dbprep='rdm && rdtp'
 alias drop='cd ~/Dropbox'
 alias ea='vi ~/.bash/aliases'
 alias ee='cd ~/src/sandbox/elm/elm-spa-example/src'
 alias ef='vi ~/.bash/functions'
 alias el='cd ~/src/sandbox/elm/garage'
-# alias el='cd ~/src/sandbox/elm-spa-example/src'
-# alias el='cd ~/src/sandbox/elm/elm-pagination'
 alias emod='vim `git diff --name-only`'
 alias es='cd ~/src/enterprise-services/purchase'
 alias eu='cd ~/src/euler'
-# alias g='DO NOT ALIAS g'
 alias gad='git add .'
 alias gadu='git add -u .'
 alias gbr='git branch'
@@ -60,21 +72,22 @@ alias goa='cd ~/aero_manager;nvm use'
 alias goc='cd ~/rails/cams'
 alias gof='cd ~/src/wrxt/app/assets/front_end/ng-app/app/modules/redx_workspaces/src/multi_vari'
 alias gop='cd ~/Dropbox/pl_practice'
-alias gow='cd ~/src/wrxt;nvm use'
-alias gpush='echo "Use gp!" && git push'
+alias gow="cd ~/src/wwami-pit; source venv_3_7/bin/activate; python --version; ver"
 alias gp='git push'
 alias gpf='git push -f'
 alias gpr='git pull --rebase -pv'
+alias gpush='echo "Use gp!" && git push'
 alias grake='rspec --drb spec/ && cucumber --drb features/'
 alias grc='git rebase --continue'
 alias grh='git reset --hard'
 alias gurad='guard'
 alias hpush='git push heroku'
 alias hthelp='cat ~/Dropbox/notes/hilltop.txt'
-alias irb='irb --readline -r irb/completion'
 alias ilox='cat ~/Dropbox/notes/ilox.txt'
+alias irb='irb --readline -r irb/completion'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
 alias killruby='killall -9 ruby'
+alias mm="./manage.py makemigrations"
 alias n='cd ~/src/newsmaker'
 alias newscreen="screen -S foo"
 alias pak='gow;npm run typings; npm run pack'
@@ -84,59 +97,51 @@ alias pc='production-console'
 alias pe='cd ~/src/sandbox/phoenix-and-elm'
 alias pom='cd ~/src/plain_old_model'
 alias prepdb='dbprep'
+alias production-console='heroku run console --remote production'
+alias production-tail='heroku logs --tail --remote production'
 alias rbinfo='remote_branch_info'
 alias rc='rails console'
+alias rdm="be rake db:migrate"
+alias rdtp="be rake db:test:prepare"
 alias recent='git recent'
-alias remore='!! | more'
 alias reguard='killall -9 ruby ; guard'
+alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
+alias remore='!! | more'
+alias repush="gpr && git push"
 alias rerake='!! && rake'
 alias restart_apache="sudo /etc/init.d/apache2 restart"
 alias restart_postgres="stoppostgres && startpostgres"
 alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp *'
 alias retagwithcoffee='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * && coffeetags -R -f >> tags'
-alias repush="gpr && git push"
 alias review="git diff master"
-alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
-alias rdm="be rake db:migrate"
-alias rdtp="be rake db:test:prepare"
 alias rs='bundle install && rails server -p 3000'
-alias sand='cd ~/src/sandbox'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
+alias sand='cd ~/src/sandbox'
 alias sb='source ~/.bash_profile'
-alias sc='staging-console'
+alias sc="gow; ./manage.py shell"
 alias sfh='cd ~/code/speaking-for-hackers-book'
 alias shpush='rake && hpush'
 alias sml='rlwrap sml'
 alias so='source ~/.bash_profile'
 alias sp='safepush'
-alias ss='svcwatch=1 DEBUG=false LO=true rails s'
-alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias ss="./manage.py runserver"
+alias ssa="ssh devop@128.208.123.176"
+alias ssp="ssh devop@128.208.123.177"
+alias ssq="ssh devop@128.208.123.175"
+alias staging-console='heroku run console --remote staging'
+alias staging-tail='heroku logs --tail --remote staging'
 alias staging='git push heroku-staging master'
+alias startdb="docker run --name wwami-postgres -dit -e POSTGRES_PASSWORD=3mbc7K6nPzFcgkGedBD3 -e POSTGRES_USER=postgres -p 5432:5432 wwami-postgres"
+alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias startredis='redis-server /usr/local/etc/redis.conf &'
 alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
-# alias stree='open -a SourceTree'
 alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped." && repush'
 alias tcard='vi ~/Dropbox/tcard.rb'
 alias track='git checkout -t'
-alias visa='head -n 20 ~/Dropbox/notes/project-notes.txt'
+alias ver='python -c "import django; print(django.get_version())"'
 alias vi='nvim'
+alias visa='head -n 20 ~/Dropbox/notes/project-notes.txt'
 alias vpn="cd; sudo openvpn --config ls_office_vpn_client.conf"
 alias vu='cd ~/code/vim-university'
 alias z='zeus'
 alias zs='zeus start'
-
-# Heroku staging
-alias staging-console='heroku run console --remote staging'
-alias staging-tail='heroku logs --tail --remote staging'
-
-# Heroku production
-alias production-console='heroku run console --remote production'
-alias production-tail='heroku logs --tail --remote production'
-
-# # Heroku databases
-alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
-alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
-alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
-alias db-backup-production='heroku pgbackups:capture --remote production'
-alias db-backups='heroku pgbackups --remote production'
-
