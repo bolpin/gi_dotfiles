@@ -29,9 +29,8 @@ task :install do
   end
 
   # Handle ssh pubkey on its own
-  puts "Linking public ssh key"
-  system %Q{rm "$HOME/.ssh/id_rsa.pub"}
-  system %Q{ln -s "$PWD/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"}
+  # puts "Linking public ssh key"
+  # system %Q{ln -s "$PWD/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"}
 
   # TODO: Setup neovim
     # mkdir ~/.config
