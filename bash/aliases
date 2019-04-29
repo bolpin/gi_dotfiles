@@ -7,8 +7,8 @@ elif [[ $platform == 'Darwin' ]]; then
 fi
 
 
-# Show ten most used commands in history:
-# history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+# Show twenty most used commands in history:
+# history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -n 20
 
 
 
@@ -45,6 +45,7 @@ alias db-pull-production='heroku db:pull --remote production --confirm `basename
 alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
 alias dbprep='rdm && rdtp'
 alias drop='cd ~/Dropbox'
+alias e='cd ~/src/unisporkal/gems/unisporkal_engine'
 alias ea='vi ~/.dotfiles/bash/aliases'
 alias ee='cd ~/src/sandbox/elm/elm-spa-example/src'
 alias el='cd ~/src/sandbox/elm/garage'
@@ -65,20 +66,21 @@ alias gdc='git diff --cached'
 alias gdm='git diff master'
 alias get='sudo apt-get install'
 alias gg='git l'
-alias ghelp='cat ~/Dropbox/notes/git.txt'
+alias ghelp='cat ~/ghelp.txt'
+alias go='cd ~/src/unisporkal'
 alias goa='cd ~/aero_manager;nvm use'
-alias goc='cd ~/rails/cams'
+alias goc='cd ~/src/composite'
 alias gof='cd ~/src/wrxt/app/assets/front_end/ng-app/app/modules/redx_workspaces/src/multi_vari'
-alias gop='cd ~/Dropbox/pl_practice'
 alias gow="cd ~/src/wwami-pit; source venv_3_7/bin/activate; python --version; ver"
 alias gp='git push'
 alias gpf='git push -f'
-alias gpr='git pull --rebase -pv'
+alias gpr='git pull --rebase -v'
 alias gpush='echo "Use gp!" && git push'
 alias grake='rspec --drb spec/ && cucumber --drb features/'
 alias grc='git rebase --continue'
 alias grh='git reset --hard'
 alias gurad='guard'
+alias ha='cd ~/src/unisporkal/gi_proxy; ./runDocker.sh -b'
 alias hpush='git push heroku'
 alias hthelp='cat ~/Dropbox/notes/hilltop.txt'
 alias ilox='cat ~/Dropbox/notes/ilox.txt'
@@ -88,11 +90,13 @@ alias killruby='killall -9 ruby'
 alias mm="./manage.py makemigrations"
 alias n='cd ~/src/newsmaker'
 alias newscreen="screen -S foo"
+alias p='cd ~/src/unisporkal/purchase'
 alias pak='gow;npm run typings; npm run pack'
 alias parallel='rdtp && rake parallel:prepare test:parallel_with_specs'
 alias patch='git format-patch HEAD^ --stdout > patch.diff'
 alias pc='production-console'
 alias pe='cd ~/src/sandbox/phoenix-and-elm'
+alias pn='vi ~/projectnotes.txt'
 alias pom='cd ~/src/plain_old_model'
 alias prepdb='dbprep'
 alias production-console='heroku run console --remote production'
@@ -121,7 +125,8 @@ alias shpush='rake && hpush'
 alias sml='rlwrap sml'
 alias so='source ~/.bash_profile'
 alias sp='safepush'
-alias ss="./manage.py runserver"
+alias ss='bundle exec rails server'
+# alias ss="./manage.py runserver"
 alias ssa="ssh devop@128.208.123.176"
 alias ssp="ssh devop@128.208.123.177"
 alias ssq="ssh devop@128.208.123.175"
