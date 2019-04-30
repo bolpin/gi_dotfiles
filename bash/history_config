@@ -1,11 +1,16 @@
 # Gimme a huge history
 export HISTSIZE=50000
 
-# Don't store duplicate lines in history
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
 export HISTCONTROL=ignoreboth
+
+# Save 2,000,000 lines of history to disk (will have to grep ~/.bash_history for full listing)
+export HISTFILESIZE=2000000
 
 # Apend to history instead of overwriting
 shopt -s histappend
 
 # Unify histories across screen sessions
-PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -n"
+#PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -n"
+
