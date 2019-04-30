@@ -9,7 +9,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -30,7 +30,7 @@ Plugin 'elmcast/elm-vim'
 
 Plugin 'kchmck/vim-coffee-script'
 
-call vundle#end()
+filetype plugin indent on
 
 " Needed for matching def, end, etc. in ruby
 runtime macros/matchit.vim
