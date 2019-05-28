@@ -32,6 +32,7 @@
   ci = commit
   st = status
   br = branch
+  ; git ls-files -v| grep '^S'      # to list all marked files using git-update-index --skip-worktree
   gl-fix = !sh -c 'git update-index --no-skip-worktree Gemfile.lock && git checkout -- Gemfile.lock && git update-index --skip-worktree Gemfile.lock'
   praise = blame
   recent = shortlog -sn --since='7 days'
