@@ -25,7 +25,6 @@ fi
 # alias g='DO NOT ALIAS g'
 # alias stree='open -a SourceTree'
 # changes since last release - formatted!
-alias ad='cd ~/src/unisporkal/asset_detail'
 alias amend="git commit --amend"
 alias ang='cd ~/src/sandbox/angular-coffeescript-styleguide'
 alias asu="cd ~/code/rails/activesupport"
@@ -74,7 +73,6 @@ alias gg='git l'
 alias ghelp='cat ~/ghelp.txt'
 alias go='cd ~/src/unisporkal'
 alias goa='cd ~/src/unisporkal/account'
-alias goc='cd ~/src/composite'
 alias gof='cd ~/src/wrxt/app/assets/front_end/ng-app/app/modules/redx_workspaces/src/multi_vari'
 alias gow="cd ~/src/wwami-pit; source venv_3_7/bin/activate; python --version; ver"
 alias gp='git push'
@@ -140,7 +138,8 @@ alias staging-console='heroku run console --remote staging'
 alias staging-tail='heroku logs --tail --remote staging'
 alias staging='git push heroku-staging master'
 alias startdb="docker run --name wwami-postgres -dit -e POSTGRES_PASSWORD=3mbc7K6nPzFcgkGedBD3 -e POSTGRES_USER=postgres -p 5432:5432 wwami-postgres"
-alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias startpostgres='pg_ctl -D /usr/local/var/postgres start'
+#alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias startredis='redis-server /usr/local/etc/redis.conf &'
 alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped." && repush'
