@@ -1,5 +1,4 @@
 
-
 # unipsorkal startup (run from a tmux session)
 function uv { 
   tmux rename-session -s unisporkal
@@ -172,14 +171,20 @@ function g {
   if [[ $# > 0 ]]; then
     git "$@"
   else
+    if [[ -f Gemfile.lock ]]
+    then
+      lock_modified=$(command git status | grep 'modified: \+Gemfile.lock$' | wc -l)
+      gemfile_modified=$(command git status | grep 'modified: \+Gemfile$' | wc -l)
+
+      if [[ lock_modified -eq 1 && gemfile_modified -eq 0 ]]
+      then
+        command git checkout Gemfile.lock
+      fi
+    fi
     git status --short
   fi
 }
 # compdef g=git
-
-
-
-
 
 
 
