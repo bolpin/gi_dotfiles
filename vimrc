@@ -4,21 +4,18 @@
 
 autocmd!
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-
-Plugin 'gmarik/Vundle.vim'
+set nocompatible
+filetype off
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
@@ -29,6 +26,7 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'elmcast/elm-vim'
 
 Plugin 'kchmck/vim-coffee-script'
+call vundle#end()
 
 filetype plugin indent on
 
@@ -89,13 +87,11 @@ filetype plugin indent on
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-let mapleader=","
 " Fix slow O inserts
 set timeout timeoutlen=1000 ttimeoutlen=100
 " Normally, Vim messes with iskeyword when you open a shell file. This can
 " leak out, polluting other file types even after a 'set ft=' change. This
 " variable prevents the iskeyword change so it can't hurt anyone.
-let g:sh_noisk=1
 " Modelines (comments that set vim options on a per-file basis)
 set modeline
 set modelines=3
@@ -109,12 +105,17 @@ set nojoinspaces
 set autoread
 set list
 set listchars=tab:>-
-set number
+set nofixendofline
+" set number
 
-let g:elm_format_autosave=1
-
-let g:ctrlp_max_files=30000
 let g:ctrlp_custom_ignore = 'elm-stuff\|node_modules\|bower_components\|DS_Store\|git\|.git\|tmp'
+let g:ctrlp_max_files=30000
+let g:elm_format_autosave=1
+let g:sh_noisk=1
+let g:ackprg = 'ag --nogroup --nocolor --column'
+let mapleader=","
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -195,6 +196,7 @@ vnoremap > >gv
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
 map <Leader>cd :cd %:p:h<CR>
+map <Leader>cl :tabe config/locales/en-us.yml<CR>
 "map <Leader>fix :cnoremap % %<CR>
 nnoremap <leader>d :NERDTreeToggle<cr>
 nnoremap <leader>e :ElmMake<CR>
@@ -216,7 +218,8 @@ noremap <leader>l <C-w>l
 map <leader>m Orequire 'pry';binding.pry<ESC>
 map <leader>mc :%w !pbcopy<cr>
 map <leader>mm O/* tslint:disable */<CR>debugger;<CR>/* tslint:enable */<ESC>
-map <leader>n :call RenameFile()<cr>
+map <leader>n Odebugger<ESC>
+" map <leader>n :call RenameFile()<cr>
 map <Leader>nc :sp ~/Dropbox/notes/coding-notes.txt<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<CR>
 map <Leader>np :sp ~/Dropbox/notes/project-notes.txt<CR>

@@ -1,3 +1,5 @@
+echo ".bash_profile"
+
 source ~/.bash/aliases
 source ~/.bash/functions
 source ~/.bash/completions

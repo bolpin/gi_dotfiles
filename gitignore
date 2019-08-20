@@ -13,3 +13,4 @@ spec/javascripts/compiled/*
 spec/javascripts/fixtures/
 spec/javascripts/fixtures/*
 public/landing/*.*
+
