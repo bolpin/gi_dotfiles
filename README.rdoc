@@ -10,5 +10,6 @@ Vim users might find useful stuff in .vimrc and vim/snippets.
 
   Vim plugins are managed through vundle. You'll need to install vundle to get them.
 
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  Then open Vim and run :BundleInstall.
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+  Then open Vim and run :PluginInstall.

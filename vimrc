@@ -4,6 +4,7 @@
 
 autocmd!
 
+" to install plugins: :PluginInstall
 set nocompatible
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
