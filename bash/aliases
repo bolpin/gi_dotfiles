@@ -136,7 +136,8 @@ alias shpush='rake && hpush'
 alias sml='rlwrap sml'
 alias so='source ~/.bash_profile'
 alias sp='safepush'
-alias ss='svcwatch_hide=countries LETTEROPENER=1 bundle exec rails server'
+# alias ss='svcwatch=4 svcwatch_hide=countries LETTEROPENER=1 bundle exec rails server'
+alias ss='svcwatch=4 svcwatch_hide=countries bundle exec rails server'
 # alias ss="./manage.py runserver"
 alias ssa="ssh devop@128.208.123.176"
 alias ssp="ssh devop@128.208.123.177"
