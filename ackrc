@@ -7,10 +7,18 @@
 --ignore-dir=node_modules
 --ignore-dir=bower_components
 --ignore-dir=elm-stuff
+--ignore-dir=packs
+--ignore-dir=packs-test
+--ignore-dir=rack_fixtures
+--ignore-dir=fixtures
 
+--ignore-file=is:yarn.lock
+--ignore-file=is:Gemfile.lock
 --ignore-file=is:elm.js
 --ignore-file=is:tags
 --ignore-file=is:foo
+--ignore-file=is:_jquery-ui.min.scss.css
+--ignore-file=is:failed_examples.txt
 
 # follow symlinks
 --follow

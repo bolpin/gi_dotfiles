@@ -113,7 +113,7 @@ let g:ctrlp_custom_ignore = 'elm-stuff\|node_modules\|bower_components\|DS_Store
 let g:ctrlp_max_files=30000
 let g:elm_format_autosave=1
 let g:sh_noisk=1
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" let g:ackprg = 'ag --nogroup --nocolor --column'
 let mapleader=","
 
 
