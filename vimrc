@@ -25,6 +25,7 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'rizzatti/dash.vim'
 Plugin 'elmcast/elm-vim'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 Plugin 'kchmck/vim-coffee-script'
 call vundle#end()
@@ -116,6 +117,8 @@ let g:sh_noisk=1
 " let g:ackprg = 'ag --nogroup --nocolor --column'
 let mapleader=","
 
+
+let vim_markdown_preview_hotkey='<C-m>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS

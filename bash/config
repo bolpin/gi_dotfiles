@@ -69,3 +69,5 @@ set -o vi
 export LETTEROPENER=1
 export SVCWATCH_HIDE=countries
 
+PATH="/Users/bolpin/Library/Python/3.7/bin/:$PATH"
+
