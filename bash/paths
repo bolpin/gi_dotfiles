@@ -2,4 +2,6 @@ export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/loca
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export PATH="$PATH:/usr/local/smlnj/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
