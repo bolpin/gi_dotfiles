@@ -20,6 +20,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'wellle/targets.vim'
 
 Plugin 'slim-template/vim-slim.git'
 Plugin 'godlygeek/tabular'
@@ -27,7 +28,10 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'elmcast/elm-vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
-Plugin 'kchmck/vim-coffee-script'
+" JS linters
+Plugin 'dense-analysis/ale'
+" Plugin 'vim-syntastic/syntastic'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -199,6 +203,7 @@ vnoremap > >gv
 
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <c-r><c-w><CR>
+map <leader>b i6aabv0-contact-us<ESC>
 map <Leader>cd :cd %:p:h<CR>
 map <Leader>cl :tabe config/locales/en-us.yml<CR>
 "map <Leader>fix :cnoremap % %<CR>
@@ -253,6 +258,17 @@ nnoremap <leader>w :w\|:!script/features --profile wip<cr>
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
+
+
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+highlight ALEError ctermbg=DarkMagenta
+
+" let g:syntastic_javascript_checkers=['standard']
+" let g:syntastic_javascript_standard_exec = 'standard'
+
 
 
 " Close all other windows, open a vertical split, and open this file's test
