@@ -38,6 +38,7 @@
   gemfile-lock-fix = !sh -c 'git update-index --no-skip-worktree Gemfile.lock && git checkout -- Gemfile.lock && git update-index --skip-worktree Gemfile.lock'
   gemfile-lock-alt-fix = !sh -c 'git fetch --all && git checkout origin/master -- Gemfile.lock && git commit -m "tmp" --no-verify && git pull rebase'
   yl-fix = !sh -c 'git update-index --no-skip-worktree yarn.lock && git checkout -- yarn.lock && git update-index --skip-worktree yarn.lock'
+  really-refresh = !sh -c 'git update-index --really-refresh && git reset --hard'
   praise = blame
   recent = shortlog -sn --since='7 days'
 
