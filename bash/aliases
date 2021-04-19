@@ -25,6 +25,7 @@ fi
 # alias g='DO NOT ALIAS g'
 # alias stree='open -a SourceTree'
 # changes since last release - formatted!
+
 alias amend="git commit --amend"
 alias ang='cd ~/src/sandbox/angular-coffeescript-styleguide'
 alias asu="cd ~/code/rails/activesupport"
@@ -61,17 +62,17 @@ alias gcaa='git commit -a --amend -C HEAD'
 alias gcl='git clone'
 alias gcm='git commit -m'
 alias gco='git checkout'
+alias goct='cd ~/src/functional-programming'
 alias gd='git diff'
 # alias gd='git diff -w'
 alias gdc='git diff --cached'
 alias gdm='git diff master'
 alias get='sudo apt-get install'
-# checks for any files flagged w/ --skip-worktree alias
-alias gskipped="git ls-files -v|grep '^S'"
-alias gsl='echo "git stash";echo "--- -----";git stash list'
+alias gfi='git-fi'
 alias gg='git l'
 alias ghelp='cat ~/ghelp.txt'
 alias go='cd ~/src/unisporkal'
+alias goaa="cd ~/src/react/react-all-access"
 alias goad='cd ~/src/unisporkal/asset_detail'
 alias goas='cd ~/src/unisporkal/asset_detail'
 alias goass='cd ~/src/unisporkal/asset_detail'
@@ -81,8 +82,11 @@ alias gocns='cd ~/src/unisporkal/customer-notifications'
 alias goe='cd ~/src/unisporkal/gems/unisporkal_engine'
 alias gof='cd ~/src/fowler'
 alias goh='cd ~/src/humi'
+alias gog='cd ~/src/unisporkal/gems/globalization'
+alias gobot='cd ~/src/unisporkal/guild-bot'
 alias gojs='cd ~/src/edx'
 alias gol='cd ~/src/unisporkal/landing'
+alias goli='cd ~/src/getty-lingo-bot'
 alias gom='cd ~/src/unisporkal/misc_admin'
 alias gop='cd ~/src/unisporkal/purchase'
 alias gopapa='cd ~/src/ng-demos/modular'
@@ -90,15 +94,24 @@ alias gopl='cd ~/src/AdobeAddOn'
 alias gos='cd ~/src/unisporkal/sign_in'
 alias gose='cd ~/src/unisporkal/search'
 alias gosi='cd ~/src/unisporkal/sign_in'
+alias goso='cd ~/src/unisporkal/purchase/app/models/sales_order/'
+alias gost='cd ~/src/unisporkal/gems/unisporkal_styles'
+alias gottt='cd ~/src/react/tic/'
+alias gotriv='cd ~/src/react/react-lab-trivia/src'
 alias gow="cd ~/src/wwami-pit; source venv_3_7/bin/activate; python --version; ver"
+alias gowp='cd ~/src/wordpress-plugin'
 alias gpr='git pull --rebase -v'
 # alias gpush='echo "Use gp!" && git push'
 alias grake='rspec --drb spec/ && cucumber --drb features/'
 alias grc='git rebase --continue'
 alias grh='git reset --hard'
+# checks for any files flagged w/ --skip-worktree alias
+alias gskipped="git ls-files -v|grep '^S'"
+alias gsl='echo "git stash";echo "--- -----";git stash list'
 alias gurad='guard'
 alias ham='cd ~/src/unisporkal/gi_proxy; git checkout admin_apps_2; git pull --rebase; ./runDocker.sh -b'
 alias ha='cd ~/src/unisporkal/gi_proxy; git checkout master; git pull --rebase; ./runDocker.sh -b'
+alias hack='vi ~/Dropbox/hackathon-current'
 alias hpush='git push heroku'
 alias hthelp='cat ~/Dropbox/notes/hilltop.txt'
 alias ilox='cat ~/Dropbox/notes/ilox.txt'
@@ -110,6 +123,7 @@ alias jsrepl="env NODE_NO_READLINE=1 rlwrap node"
 alias ktest='AWS_REGION=us-west-2 yarn debug-test'
 alias killruby='killall -9 ruby'
 # alias less='less -R'
+alias lingo='vi ~/src/getty-lingo-bot/data/glossary.json'
 alias me='vi ~/Dropbox/SAVE-accomplishments-and-goals.txt'
 alias mm="./manage.py makemigrations"
 alias newscreen="screen -S foo"
@@ -142,13 +156,16 @@ alias rs='bundle install && rails server -p 3000'
 alias safepush='git pull --rebase && bundle install && rdm && rake && git push'
 alias sand='cd ~/src/sandbox'
 alias sc="gow; ./manage.py shell"
+alias search_http="ag --js --ruby --ignore *spec* -l .*[^#].*[\"\']http: | sed \"s/gems\//gems_/\" | cut -d'/' -f1 | sort | uniq"
 alias sfh='cd ~/code/speaking-for-hackers-book'
 alias shpush='rake && hpush'
 alias sml='rlwrap sml'
+alias sn='vi ~/Dropbox/notes/splunk-notes.txt'
 alias so='source ~/.bash_profile'
 alias sp='safepush'
 # alias ss='svcwatch=4 svcwatch_hide=countries LETTEROPENER=1 bundle exec rails server'
-alias ss='LETTER_OPENER=1 svcwatch=4 svcwatch_hide=countries bundle exec rails server'
+# alias ss='LETTER_OPENER=1 svcwatch=4 svcwatch_hide=countries bundle exec rails server'
+alias ss='LETTER_OPENER=1 bundle exec rails server'
 # alias ss="./manage.py runserver"
 alias ssa="ssh devop@128.208.123.176"
 alias ssp="ssh devop@128.208.123.177"

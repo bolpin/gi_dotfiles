@@ -12,6 +12,8 @@
 --ignore-dir=rack_fixtures
 --ignore-dir=fixtures
 
+--ignore-file=is:.rubocop.yml
+--ignore-file=is:examples.txt
 --ignore-file=is:yarn.lock
 --ignore-file=is:Gemfile.lock
 --ignore-file=is:elm.js

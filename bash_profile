@@ -12,4 +12,8 @@ source ~/.bash/history_config
 
 eval "$(rbenv init -)"
 
+export DEV_DYNAMODB_PORT = 8543
+
 export GITLAB_ACCESS_TOKEN=1jShRch8YY2-SzwLhV9b
+export AWS_PROFILE=oktad
+source authaws

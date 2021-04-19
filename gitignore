@@ -13,4 +13,5 @@ spec/javascripts/compiled/*
 spec/javascripts/fixtures/
 spec/javascripts/fixtures/*
 public/landing/*.*
-
+app.json
+keys.json

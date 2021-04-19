@@ -24,6 +24,7 @@
   co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ; loc = config --local
   ; glo = config --global
   ; peek = fetch -v --dry-run

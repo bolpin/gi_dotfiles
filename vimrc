@@ -29,7 +29,7 @@ Plugin 'elmcast/elm-vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " JS linters
-Plugin 'dense-analysis/ale'
+" Plugin 'dense-analysis/ale'
 " Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
@@ -82,7 +82,6 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backspace=indent,eol,start
 " display incomplete commands
 set showcmd
-" Enable highlighting for syntax
 syntax on
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -118,6 +117,7 @@ let g:ctrlp_custom_ignore = 'elm-stuff\|node_modules\|bower_components\|DS_Store
 let g:ctrlp_max_files=30000
 let g:elm_format_autosave=1
 let g:sh_noisk=1
+" ag -> https://github.com/ggreer/the_silver_searcher
 " let g:ackprg = 'ag --nogroup --nocolor --column'
 let mapleader=","
 
@@ -238,6 +238,7 @@ nnoremap <Leader>p :diffput<CR>
 map <Leader>ppj :.!python -m json.tool<CR>
 nnoremap <leader>q :call ToggleQuickfix()<cr>
 nnoremap <leader>Q :cc<cr>
+nmap <leader>R :!clear;eslint %<enter>
 map <Leader>r :!ruby %<cr>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 nnoremap <leader>ri :call InlineVariable()<cr>
@@ -261,14 +262,11 @@ imap <c-c> <esc>
 
 
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = {'javascript': ['eslint']}
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+
+" let g:ale_fixers = {'javascript': ['eslint']}
+" let g:ale_fix_on_save = 1
 highlight ALEError ctermbg=DarkMagenta
-
-" let g:syntastic_javascript_checkers=['standard']
-" let g:syntastic_javascript_standard_exec = 'standard'
-
 
 
 " Close all other windows, open a vertical split, and open this file's test
