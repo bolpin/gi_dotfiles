@@ -65,9 +65,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/opt/libxml2/lib/pkgco
 
 set -o vi
 
-# Unisporkal
-export LETTEROPENER=1
-export SVCWATCH_HIDE=countries
-
 PATH="/Users/bolpin/Library/Python/3.7/bin/:$PATH"
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-16.jdk/Contents/Home
 

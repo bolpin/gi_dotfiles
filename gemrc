@@ -3,7 +3,6 @@
 :bulk_threshold: 1000
 :sources:
 - http://rubygems.org
-- https://artifactory.getty.cloud/artifactory/api/gems/unisporkal/
 :update_sources: true
 :verbose: true
 :concurrent_downloads: 8

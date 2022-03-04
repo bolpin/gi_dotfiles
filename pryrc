@@ -1,10 +1,10 @@
-Pry.config.editor = 'vim'
-Pry.config.commands.alias_command "q", "exit-all"
-
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
+# Pry.config.editor = 'vim'
+# Pry.config.commands.alias_command "q", "exit-all"
+#
+# Pry.commands.alias_command 'c', 'continue'
+# Pry.commands.alias_command 's', 'step'
+# Pry.commands.alias_command 'n', 'next'
+# Pry.commands.alias_command 'f', 'finish'
 
 # # Toys methods
 # # See https://gist.github.com/807492
@@ -13,25 +13,25 @@ Pry.commands.alias_command 'f', 'finish'
 #     block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
 #   end
 # end
-# 
+#
 # class Hash
 #   def self.toy(n=10)
 #     Hash[Array.toy(n).zip(Array.toy(n){|c| (97+c).chr})]
 #   end
 # end
-# 
+#
 # if defined?(Rails) && Rails.env
 #   require 'logger'
-# 
+#
 #   if defined?(ActiveRecord)
 #     ActiveRecord::Base.logger = Logger.new(STDOUT)
 #     ActiveRecord::Base.clear_active_connections!
 #   end
-# 
+#
 # end
-# 
-# 
-# 
+#
+#
+#
 # # Load 'awesome_print'
 # begin
 #   require 'awesome_print'
@@ -93,20 +93,20 @@ Pry.commands.alias_command 'f', 'finish'
 #   if defined?(Rails::ConsoleMethods)
 #     extend Rails::ConsoleMethods
 #   end
-# 
+#
 #   # r! to reload Rails console
 #   def r!
 #     reload!
 #   end
-# 
+#
 #   # automatically call `reload` every time a new command is typed
 #   # Pry.hooks.add_hook(:before_eval, :reload_everything) { reload!(false) }
-# 
+#
 #   # sql for arbitrary SQL commands through the AR
 #   def sql(query)
 #     ActiveRecord::Base.connection.execute(query)
 #   end
-# 
+#
 #   # set logging to screen
 #   if ENV.include?('RAILS_ENV')
 #     # Rails 2.x
@@ -121,7 +121,7 @@ Pry.commands.alias_command 'f', 'finish'
 #       ActiveRecord::Base.logger = Rails.logger
 #     end
 #   end
-# 
+#
 #   # .details method for pretty printing ActiveRecord's objects attributes
 #   class Object
 #     def details
@@ -136,7 +136,7 @@ Pry.commands.alias_command 'f', 'finish'
 #     end
 #     alias :detailed :details
 #   end
-# 
+#
 #   # returns a collection of the methods that Rails added to the given class
 #   # http://lucapette.com/irb/rails-core-ext-and-irb/
 #   class Class
@@ -144,7 +144,7 @@ Pry.commands.alias_command 'f', 'finish'
 #       self.instance_methods.map {|m| [m, self.instance_method(m).source_location] }.select {|m| m[1] && m[1][0] =~/activesupport/}.map {|m| m[0]}.sort
 #     end
 #   end
-# 
+#
 #   # local methods helper
 #   # http://rakeroutes.com/blog/customize-your-irb/
 #   class Object

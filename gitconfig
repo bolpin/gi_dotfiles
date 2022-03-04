@@ -1,7 +1,6 @@
 [user]
-  email = brian.olpin@gettyimages.com
+  email = bolpin@gmail.com
   name = Brian Olpin
-; email = bolpin@gmail.com
 
 [http]
   sslVerify = false
@@ -73,6 +72,10 @@
 
 
 [pull]
-	rebase = true
+  rebase = true
+
 [init]
-	templatedir = ~/.git-templates
+  templatedir = ~/.git-templates
+
+[credential]
+  helper = manager-core
